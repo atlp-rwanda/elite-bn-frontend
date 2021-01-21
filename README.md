@@ -1,8 +1,8 @@
 # Barefoot Nomad - Making company travel and accomodation easy and convinient.
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/3c16f080732707287cb9/maintainability)](https://codeclimate.com/github/atlp-rwanda/elite-bn-frontend/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3c16f080732707287cb9/maintainability)](https://codeclimate.com/github/atlp-rwanda/elite-bn-frontend/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/3c16f080732707287cb9/test_coverage)](https://codeclimate.com/github/atlp-rwanda/elite-bn-frontend/test_coverage). ![badge](https://action-badges.now.sh/atlp-rwanda/elite-bn-frontend?action=test)
 
-![badge](https://action-badges.now.sh/atlp-rwanda/elite-bn-frontend?action=test)
+
 
 ![Design preview for the Barefoot Nomad web Platform](barefoot.png)
 
