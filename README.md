@@ -1,6 +1,6 @@
 # Barefoot Nomad - Making company travel and accomodation easy and convinient.
 
-![Actions Status](https://github.com/atlp-rwanda/elite-bn-frontend/workflows/ActionCI.yml/badge.svg)
+![Actions Status](https://github.com/atlp-rwanda/elite-bn-frontend/.github/workflows/ActionCI.yml/badge.svg)
 
 ![Design preview for the Barefoot Nomad web Platform](barefoot.png)
 
