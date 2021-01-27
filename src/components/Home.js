@@ -12,9 +12,15 @@ const Index = () => (
     </Link>
     <Link
       className="block w-64 text-center mt-2 m-auto bg-gray-300 hover:shadow-lg"
+<<<<<<< HEAD
       to="/login"
     >
       login
+=======
+      to="/auth"
+    >
+      Signup
+>>>>>>> 95105ca (feat(user-signup): register a new user)
     </Link>
     <h2 className="m-6">
       Welcome to Our Very beginning of this Barefoot Front-end Implementation
