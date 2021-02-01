@@ -42,7 +42,6 @@ function Counter(props) {
     </div>
   );
 }
-
 const mapStateToProps = (state) => ({
   ctrl: state.ctr.counter,
   storedResults: state.res.results,
