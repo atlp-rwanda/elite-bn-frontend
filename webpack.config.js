@@ -73,8 +73,8 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: (`${__dirname}/dist`),
     hot: true,
+    historyApiFallback: true,
     port: process.env.PORT,
   },
   mode: 'production',
