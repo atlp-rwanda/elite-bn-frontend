@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from './images/image.png';
+import Image from './image.png';
 import { Formik, Form } from 'formik';
 import { TextField } from './TextField';
 import * as Yup from 'yup';
