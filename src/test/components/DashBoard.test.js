@@ -32,8 +32,6 @@ describe('Test  dashboard component', () => {
     DashboardWrapper = shallow(<Dashboard />);
   });
   test('Test dashboard', () => {
-    test('Dashboard Test map state to props', () => {
-      console.log(DashboardWrapper.dive());
-    });
+    console.log(DashboardWrapper.debug());
   });
 });

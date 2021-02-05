@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FaBell, FaUserEdit } from 'react-icons/fa';
 import { AiOutlineDown } from 'react-icons/ai';
 import { FiGlobe } from 'react-icons/fi';
-
 import { IoLogOutOutline } from 'react-icons/io5';
 import profile from '../../assets/profile.png';
 
@@ -45,7 +44,7 @@ export const NavBar = ({ Logout }) => {
             <div className="profile flex-row flex mr-7">
               <div className="flex-row flex relative">
                 <img className="w-6 h-6 rounded-3xl  mr-1" src={profile} alt="Blank profile" />
-                <span className="text-sm mr-1 flex ">
+                <span className="down text-sm mr-1 flex ">
                   Dev
                   <AiOutlineDown
                     onClick={() => setDropDown(!dropDown)}
