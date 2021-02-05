@@ -38,7 +38,6 @@ export default function login({ history }) {
   })
   return (
     <div >
-
       <Navbar />
       <Formik
         initialValues={{
@@ -48,7 +47,6 @@ export default function login({ history }) {
         validationSchema={validate}
       >
         {formik => (
-
           <div className="flex w-full justify-between px-8">
             <div className="bg-red-500 h-auto hidden md:block">
 
@@ -60,7 +58,6 @@ export default function login({ history }) {
                 <p className="text-xs py-6 pt-2">You  have  been registerd  on Barefoot-nomad .Please login with your email and password</p>
               </section>
               <section className="mt-10">
-
                 <Form>
                   <div className="py-6">
                     <TextField label="Email" name="Email" type="text" />
