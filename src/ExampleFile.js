@@ -1,5 +1,5 @@
-//THIS IS AN EXAMPLE FILE TO TESTING WITH JEST & ENZYME
-//TRELLO TASK 'SETUP TESTING ENVIRONMENT WITH JEST&ENZYME'
+// THIS IS AN EXAMPLE FILE TO TESTING WITH JEST & ENZYME
+// TRELLO TASK 'SETUP TESTING ENVIRONMENT WITH JEST&ENZYME'
 
 import React, { Fragment } from 'react';
 
@@ -16,15 +16,13 @@ const styles = {
   },
 };
 
-const WelcomeMessage = ({ imgPath }) => {
-  return (
-    <Fragment>
-      <h1 style={styles.heading}>
-        Welcome To
-      </h1>
-      <img src={imgPath} alt="app logo" style={styles.logo} />
-    </Fragment>
-  );
-};
+const WelcomeMessage = ({ imgPath }) => (
+  <>
+    <h1 style={styles.heading}>
+      Welcome To
+    </h1>
+    <img src={imgPath} alt="app logo" style={styles.logo} />
+  </>
+);
 
 export default WelcomeMessage;

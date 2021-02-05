@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/components/Counter/CounterControl.js</title>
+    <title>Code coverage report for src/store/reducers/user.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/components/Counter</a> CounterControl.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/store/reducers</a> user.js
     </h1>
     <div class='clearfix'>
     </div>
@@ -33,35 +33,26 @@
 8
 9
 10
-11
-12
-13
-14</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+11</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React from 'react';</span>
-&nbsp;
-const <span class="fstat-no" title="function not covered" >counterControl = <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >(</span>props) =&gt; (</span></span>
-  &lt;div
-    className="w-36 px-8 py-6 border-yellow-400
-    shadow-sm font-bold cursor-pointer text-center inline-block bg-gray-400 ml-4"
-    onClick={props.clicked}
-  &gt;
-    {props.label}
-  &lt;/div&gt;
-);
-&nbsp;
-export default counterControl;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const <span class="fstat-no" title="function not covered" >users = <span class="cstat-no" title="statement not covered" >(</span>state = {}, action) =&gt; <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >{</span></span></span>
+<span class="cstat-no" title="statement not covered" >  switch (action.type) {</span>
+    case 'LOGGEDIN':
+      const newState = <span class="cstat-no" title="statement not covered" >action.payload;</span>
+<span class="cstat-no" title="statement not covered" >      return newState;</span>
+    default:
+<span class="cstat-no" title="statement not covered" >      return state;</span>
+  }
+};
+export default users;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

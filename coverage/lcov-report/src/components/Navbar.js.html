@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/store/actions/counter.js</title>
+    <title>Code coverage report for src/components/Navbar.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,7 +16,7 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/store/actions</a> counter.js
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Navbar.js
     </h1>
     <div class='clearfix'>
     </div>
@@ -47,45 +47,45 @@
 22</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import {</span>
-  ADD, DECREMENT, INCREMENT, SUBTRACT,
-} from '../../constants/actions';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React from 'react';</span>
 &nbsp;
-export const <span class="fstat-no" title="function not covered" >increment = <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >(</span>) =&gt; ({</span></span>
-  type: INCREMENT,
-});
+export default function <span class="fstat-no" title="function not covered" >Navbar() {</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;div className="flex w-full box-border justify-between p5 py-4 px-4 md:px-8 border-b-2 bg-purple-700 text-white md:bg-white md:text-black "&gt;
+      &lt;div className=""&gt;Barefoot-Nomad &lt;/div&gt;
+      &lt;div className="flex space-x-6"&gt;
 &nbsp;
-export const <span class="fstat-no" title="function not covered" >decrement = <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >(</span>) =&gt; ({</span></span>
-  type: DECREMENT,
-});
-&nbsp;
-export const <span class="fstat-no" title="function not covered" >add = <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >(</span>value) =&gt; ({</span></span>
-  type: ADD,
-  val: value,
-});
-&nbsp;
-export const <span class="fstat-no" title="function not covered" >subtract = <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >(</span>value) =&gt; ({</span></span>
-  type: SUBTRACT,
-  val: value,
-});
+        &lt;div className="bg-indigo-600 text-white w-32 text-center h-8 hidden md:block"&gt; Register&lt;/div&gt;
+        &lt;div className="bg-indigo-600 text-white w-32 text-center h-8 hidden md:block"&gt;Login&lt;/div&gt;
+        &lt;div className=""&gt;
+          &lt;i className="fa fa-globe" /&gt;
+        &lt;/div&gt;
+        &lt;div className=""&gt;english&lt;/div&gt;
+        &lt;div className=""&gt;
+          &lt;i className="fa fa-angle-down" /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
@@ -95,7 +95,7 @@ export const <span class="fstat-no" title="function not covered" >subtract = <sp
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 07 2021 18:27:50 GMT+0200 (Central Africa Time)
 </div>
 </div>
-<script src="../../../prettify.js"></script>
+<script src="../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -103,6 +103,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../../sorter.js"></script>
+<script src="../../sorter.js"></script>
 </body>
 </html>

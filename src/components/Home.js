@@ -1,9 +1,5 @@
-
 import React from 'react';
-<<<<<<< HEAD
-=======
 import { Link } from 'react-router-dom';
->>>>>>> Setup jest&enzyme testing environment (#5)
 
 const Index = () => (
   <div className="text-center">

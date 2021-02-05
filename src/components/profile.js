@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function profile() {
-    return (
-        <div>
-            profile which is blank
-        </div>
-    )
+  return (
+    <div>
+      <h1>profilelink which is blank</h1>
+    </div>
+  );
 }

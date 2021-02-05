@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/Login.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Login.js
+    </h1>
+    <div class='clearfix'>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React from 'react';</span>
+<span class="cstat-no" title="statement not covered" >import { Formik, Form } from 'formik';</span>
+<span class="cstat-no" title="statement not covered" >import * as Yup from 'yup';</span>
+<span class="cstat-no" title="statement not covered" >import Toastify from 'toastify-js';</span>
+<span class="cstat-no" title="statement not covered" >import Image from './image.png';</span>
+<span class="cstat-no" title="statement not covered" >import { TextField } from './TextField';</span>
+<span class="cstat-no" title="statement not covered" >import Navbar from './Navbar';</span>
+<span class="cstat-no" title="statement not covered" >import axios from '../axios';</span>
+<span class="cstat-no" title="statement not covered" >import 'toastify-js/src/toastify.css';</span>
+<span class="cstat-no" title="statement not covered" >import { useDispatch } from 'react-redux';</span>
+&nbsp;
+export default function <span class="fstat-no" title="function not covered" >login({ history }) <span class="cstat-no" title="statement not covered" >{</span></span>
+  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
+  const <span class="fstat-no" title="function not covered" >handleSubmit = <span class="cstat-no" title="statement not covered" >(</span>info) =&gt; {</span>
+    const { Email, Password } = <span class="cstat-no" title="statement not covered" >info;</span>
+<span class="cstat-no" title="statement not covered" >    axios.post('/users/signin', { email: Email, password: Password }).then(<span class="fstat-no" title="function not covered" >(</span>response) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch({ type: 'LOGGEDIN', payload: response.data.data });</span>
+<span class="cstat-no" title="statement not covered" >      history.push('/profile');</span>
+    }).catch(<span class="fstat-no" title="function not covered" >(</span>error) =&gt; {
+      const errorMessage = (<span class="cstat-no" title="statement not covered" >error.response ? error.response.data.message : error);</span>
+<span class="cstat-no" title="statement not covered" >      Toastify({</span>
+        text: errorMessage,
+        duration: 3000,
+        close: true,
+        position: 'right',
+        backgroundColor: 'red',
+        color: 'white',
+      }).showToast();
+    });
+  };
+  const validate = <span class="cstat-no" title="statement not covered" >Yup.object({</span>
+    Email: Yup.string()
+      .email('Email is invalid')
+      .required('Email is required'),
+    Password: Yup.string()
+      .min(6, 'Password must be at least')
+      .required('Password is required'),
+  });
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;div&gt;
+      &lt;Navbar /&gt;
+      &lt;Formik
+        initialValues={{
+          Email: '',
+          Password: '',
+        }}
+        validationSchema={validate}
+      &gt;
+        {<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span>formik) =&gt; (</span>
+          &lt;div className="flex w-full justify-between px-8"&gt;
+            &lt;div className="bg-red-500 h-auto hidden md:block"&gt;
+&nbsp;
+              &lt;img src={Image} className=" h-screen block md:block justify-self-start sm:hidden " alt="" /&gt;
+            &lt;/div&gt;
+            &lt;div className="h-auto"&gt;
+              &lt;section&gt;
+                &lt;h1 className="text-gray-600 py-6 text-2xl"&gt;Welcome Back !&lt;/h1&gt;
+                &lt;p className="text-xs py-6 pt-2"&gt;You  have  been registerd  on Barefoot-nomad .Please login with your email and password&lt;/p&gt;
+              &lt;/section&gt;
+              &lt;section className="mt-10"&gt;
+                &lt;Form&gt;
+                  &lt;div className="py-6"&gt;
+                    &lt;TextField label="Email" name="Email" type="text" /&gt;
+&nbsp;
+                    &lt;TextField label="Password" name="Password" type="password" /&gt;
+                  &lt;/div&gt;
+                  &lt;div className="py-6"&gt;
+                    &lt;button onClick={<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; handleSubmit(formik.values)} className="bg-indigo-600 text-white justify-center w-full h-8 rounded" type="submit"&gt;Login&lt;/button&gt;</span></span>
+                  &lt;/div&gt;
+                  &lt;div className="flex justify-end text-purple-600 py-6 text-sm hover:text-purple-700 hover:underline hover:cursor-pointer mb-6"&gt;
+                    Forgot password ?
+                  &lt;/div&gt;
+                  &lt;div className="space-y-5"&gt;
+                    &lt;div className="flex justify-between rounded border border-blue-600"&gt;
+                      &lt;div&gt;
+                        &lt;img src="https://img.icons8.com/fluent/48/000000/google-logo.png" className="h-6 mt-1 ml-4" /&gt;
+                      &lt;/div&gt;
+                      &lt;div className="mt-2 text-gray-500"&gt;
+                        Sign in With Google
+                      &lt;/div&gt;
+                      &lt;div className="mt-2" /&gt;
+&nbsp;
+                    &lt;/div&gt;
+                    &lt;div className="flex justify-between bg-blue-900 rounded h-8"&gt;
+                      &lt;div&gt;
+                        &lt;img src="https://img.icons8.com/metro/48/ffffff/facebook-new.png" className="h-6 mt-1 ml-4" /&gt;
+                      &lt;/div&gt;
+                      &lt;div className="text-white"&gt;
+                        Sign in With Facebook
+                      &lt;/div&gt;
+                      &lt;div className="mt-2" /&gt;
+                    &lt;/div&gt;
+&nbsp;
+                  &lt;/div&gt;
+                &lt;/Form&gt;
+              &lt;/section&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        )}
+      &lt;/Formik&gt;
+    &lt;/div&gt;
+  );
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 07 2021 18:27:50 GMT+0200 (Central Africa Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

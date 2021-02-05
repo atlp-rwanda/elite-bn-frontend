@@ -50,17 +50,15 @@ module.exports = {
   ],
 
   devServer: {
-    historyApiFallback:true,
-    contentBase:'/',
+    historyApiFallback: true,
+    contentBase: '/',
     hot: true,
     port: process.env.PORT,
   },
   mode: 'production',
-    performance: {
-        hints: false,
-        maxEntrypointSize: 512000,
-        maxAssetSize: 512000
-    }
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
 };
-
-
