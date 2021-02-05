@@ -50,7 +50,6 @@ module.exports = {
   ],
 
   devServer: {
-    contentBase: `${__dirname}/dist`,
     hot: true,
     port: process.env.PORT,
     historyApiFallback: true,

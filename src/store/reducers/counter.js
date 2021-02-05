@@ -1,6 +1,6 @@
 import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../constants/actions';
 import { counterInitialState } from '../initialState';
-import updateObject from '../utility';
+import { updateObject } from '../utility';
 
 const reducer = (state = counterInitialState, action) => {
   switch (action.type) {
