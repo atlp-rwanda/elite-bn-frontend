@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navlink{
+    @apply w-28  text-white text-center py-1 rounded-2xl  hover:cursor-pointer
+}
