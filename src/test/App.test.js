@@ -1,16 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from '../App';
-<<<<<<< HEAD
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import App from '../App';
 import store from '../store';
-=======
-<<<<<<< HEAD
-=======
 import Index from '../components/Home';
->>>>>>> 2e2ad2e... able to change password
->>>>>>> 35076d2... able to change password
 
 describe('rendering components', () => {
   xit('renders app components', () => {
