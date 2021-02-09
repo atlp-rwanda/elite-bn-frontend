@@ -16,5 +16,4 @@ export const resetInitialState = {
 
 export const changeInitialState = {
   password: '',
-  confirmPassword: '',
 };

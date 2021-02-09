@@ -18,8 +18,7 @@ export const resetSucess = (error) => ({
   type: RESET_SUCESS, error,
 });
 
-export const change = (password, confirmPassword) => ({
+export const change = (password) => ({
   type: CHANGE_PASSWORD,
   password,
-  confirmPassword,
 });

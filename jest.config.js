@@ -20,6 +20,7 @@ module.exports = {
     '\\.(css|less|scss)$': '<rootDir>/__mocks__/styleMock.js',
   },
 
+<<<<<<< HEAD
   coverageThreshold: {
     global: {
       branches: 60,
@@ -29,4 +30,6 @@ module.exports = {
     },
   },
   coverageReporters: ['json', 'lcovonly', 'text', 'clover'],
+=======
+>>>>>>> 35076d2... able to change password
 };

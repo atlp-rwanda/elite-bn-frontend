@@ -10,7 +10,7 @@ const reducer = (state = changeInitialState, action) => {
   switch (action.type) {
     case CHANGE_PASSWORD:
       return updateObject(state,
-        { password: action.password, confirmPassword: action.confirmPassword });
+        { password: action.password });
     default:
       return state;
   }

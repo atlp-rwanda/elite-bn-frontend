@@ -18,7 +18,6 @@ function ChangePasswordSkeleton() {
             <div className="m-3 p-3 flex flex-col justify-center items-center">
               <Skeleton height={40} width={600} />
               <Skeleton height={40} width={600} />
-              <Skeleton height={40} width={600} />
             </div>
           </form>
         </div>

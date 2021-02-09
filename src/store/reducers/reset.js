@@ -10,10 +10,10 @@ import updateObject from '../utility';
 const resetStart = (state, action) => updateObject(state,
   {
     email: action.email,
-    error: state.error,
-    loading: state.loading,
-    token: state.token,
-    message: state.message,
+    error: action.error,
+    loading: action.loading,
+    token: action.token,
+    message: action.message,
   });
 
 const resetSuccess = (state, action) => updateObject(state, {
@@ -30,8 +30,6 @@ const resetFail = (state, action) => updateObject(state, {
 });
 
 const reducer = (state = resetInitialState, action) => {
-  console.log(action);
-
   switch (action.type) {
     case RESET_PASSWORD:
       return resetStart(state, action);
