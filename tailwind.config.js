@@ -6,6 +6,22 @@ module.exports = {
       backgroundImage: (theme) => ({
         test1: "url('/src/images/test1.jpg')",
       }),
+      gridTemplateRows: {
+        layout: 'auto auto 150px',
+        mdScreen: 'auto auto 250px',
+      },
+      height: {
+        100: '23rem',
+      },
+      width: {
+        s: '165vh',
+      },
+      paddingTop: {
+        n: '-5em',
+      },
+      borderRadius: {
+        f: '100%',
+      },
     },
     backgroundColor: (theme) => ({
       ...theme('colors'),

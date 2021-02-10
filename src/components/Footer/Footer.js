@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer1 = () => (
-  <div className="bg-white mt-6">
+  <div className="bg-white">
     <div className="md:flex justify-between md:pt-20 pt-10 px-5 md:px-20">
       <div className="flex pb-10">
         <ul className="pr-20 flex flex-col items-between">
@@ -10,7 +10,7 @@ const Footer1 = () => (
             <Link to="/">Destination</Link>
           </li>
           <li className="pb-4 hover:text-purple-600">
-            <Link to="/">Accomodation</Link>
+            <Link to="/">Accommodation</Link>
           </li>
           <li className="pb-4 hover:text-purple-600">
             <Link to="/">Homepage</Link>

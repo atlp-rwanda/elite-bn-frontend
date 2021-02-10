@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Skeleton from 'react-loading-skeleton';
 import Image from '../assets/image.png';
 import { TextField } from './TextField';
@@ -9,27 +9,11 @@ import Footer from './Footer/Footer';
 import handle from '../store/actioncreators/handle';
 import Social from './UI/socialSignin/socialSignin';
 import DropMenu from './LandingPage/DropMenu';
-import { Link } from 'react-router-dom';
-
 
 export default function login({ history }) {
-
-
-
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user)
 
   const [state, setState] = useState({ email: '', password: '' });
-
-
-
-  useEffect(() => {
-    if (user.token) {
-      history.push('/dashboard/profile');
-    }
-  }, [])
-
-
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -47,7 +31,6 @@ export default function login({ history }) {
       [e.target.name]: value,
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,7 +44,7 @@ export default function login({ history }) {
     <div>
       <Navbar toggle={toggle} />
       <DropMenu isOpen={isOpen} toggle={toggle} />
-      <div className="px-12 py-4 ">
+      <div className="px-12 py-4">
         <div className="flex justify-between  bg-white rounded-2xl shadow-xl">
           <div className="px-4 border border-black-100">
             <section>
@@ -70,7 +53,6 @@ export default function login({ history }) {
                 You have been registered on Barefoot-nomad .Please login with your email and
                 password
               </p>
-
             </section>
             <div>
               <div className="shadow-xl py-1 border-gray-400 rounded-md">
@@ -89,7 +71,6 @@ export default function login({ history }) {
                       </div>
                       <div className="">
                         <TextField
-
                           isLoaded={loaded}
                           id="Password"
                           name="password"
@@ -103,17 +84,17 @@ export default function login({ history }) {
                       {!loaded ? (
                         <Skeleton height={30} />
                       ) : (
-                          <button
-                            id="submit-button"
-                            className="bg-indigo-600 text-white justify-center w-full h-8 rounded"
-                            type="submit"
-                          >
-                            Login
-                          </button>
-                        )}
+                        <button
+                          id="submit-button"
+                          className="bg-indigo-600 text-white justify-center w-full h-8 rounded"
+                          type="submit"
+                        >
+                          Login
+                        </button>
+                      )}
                     </div>
                     <div className="flex px-8 justify-end text-purple-600 py-6 text-sm hover:text-purple-700 hover:underline hover:cursor-pointer mb-6">
-                      <Link to="/reset-password">Forgot password</Link>
+                      Forgot password ?
                     </div>
                     <div className="space-y-6">
                       {!loaded ? <Skeleton height={30} /> : <Social />}
@@ -127,12 +108,12 @@ export default function login({ history }) {
             {!loaded ? (
               <Skeleton height={400} />
             ) : (
-                <img
-                  src={Image}
-                  className=" h-screen block md:block justify-self-start sm:hidden "
-                  alt=""
-                />
-              )}
+              <img
+                src={Image}
+                className=" h-screen block md:block justify-self-start sm:hidden "
+                alt=""
+              />
+            )}
           </div>
         </div>
       </div>

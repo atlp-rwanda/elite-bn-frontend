@@ -21,21 +21,20 @@ describe('test case for login ', () => {
     );
   });
 
-
-  it('email check', () => {
+  test('email check', () => {
     // wrapper =shallow(<Login />);
     wrapper
       .find('#Email')
       .simulate('change', { target: { name: 'email', value: 'eric74@example.com' } });
   });
-  it('password check', () => {
+  test('password check', () => {
     // wrapper =shallow(<Login />);
     <input label="Password" name="Password" type="password" placeholder="Enter your password" />;
     wrapper
       .find('#Password')
       .simulate('change', { target: { name: 'password', value: 'samplepassword' } });
   });
-  it('login check with right data', () => {
+  test('login check with right data', () => {
     // wrapper = shallow(<Login />);
     wrapper
       .find('#Email')
@@ -47,7 +46,7 @@ describe('test case for login ', () => {
     wrapper.find('form').simulate('submit');
   });
 
-  it('login check with wrong data', () => {
+  test('login check with wrong data', () => {
     //  wrapper=shallow(<Login />);
 
     wrapper
@@ -55,7 +54,7 @@ describe('test case for login ', () => {
       .simulate('change', { target: { name: 'email', value: 'eric@example.com' } });
 
     wrapper
-      .find('#Email')
+      .find('#Password')
       .simulate('change', { target: { name: 'password', value: 'samplepassword123' } });
     wrapper.find('form').simulate('submit');
   });

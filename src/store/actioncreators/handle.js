@@ -3,13 +3,14 @@ import { successToast, errorToast } from '../../utils/toast';
 import setAthorizationToken from '../../utils/setAuthorization';
 
 const handle = async (state, history, dispatch) => {
-  axios.post('http://localhost:5000/api/v1/users/signin', state)
+  axios
+    .post('http://localhost:5000/api/v1/users/signin', state)
     .then((response) => {
       const { token } = response.data.data;
-      const { data } = response.data;
+      const { userInfo } = response.data.data;
       localStorage.setItem('jwtToken', token);
       setAthorizationToken(token);
-      localStorage.setItem('userInfo', JSON.stringify(data));
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
       const { fullName } = response.data.data.userInfo;
       successToast(fullName);
       dispatch({ type: 'LOGGEDIN', payload: response.data.data });

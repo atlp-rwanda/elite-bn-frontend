@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
@@ -60,6 +61,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
+    new NodePolyfillPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new CleanWebpackPlugin(),
@@ -70,6 +72,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     }),
   ],
 

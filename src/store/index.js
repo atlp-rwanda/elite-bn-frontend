@@ -2,17 +2,21 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import userReducer from './reducers/user';
-
+import userProfileReducer from './reducers/ProfileReducer';
+import setAuthorization from '../utils/setAuthorization';
 import authReducer from './reducers/auth';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  user: userReducer
+  user: userReducer,
+  userProfile: userProfileReducer,
 });
 const logger = () => (next) => (action) => {
   const result = next(action);
   return result;
 };
+
+setAuthorization(localStorage.jwtToken);
 
 const composeEnhancers = composeWithDevTools || compose;
 

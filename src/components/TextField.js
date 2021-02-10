@@ -7,16 +7,17 @@ export const TextField = ({ label, changeValue, name, placeholder, isLoaded, ...
       {!isLoaded ? (
         <Skeleton height={30} />
       ) : (
-          <input
-            onChange={changeValue}
-            type="text"
-            className="rounded  shadow-md w-full text-gray-700 border border-gray-100 py-2  px-3  spacey-3 border border-gray-100"
-            name={name}
-            placeholder={placeholder}
-            {...props}
-            autoComplete="off"
-          />
-        )}
+        <input
+          onChange={changeValue}
+          type="text"
+          className="rounded  shadow-md w-full text-gray-700 border border-gray-100 py-2  px-3  spacey-3 border border-gray-100"
+          name={name}
+          placeholder={placeholder}
+          {...props}
+          autoComplete="off"
+        />
+      )}
+      <button></button>
     </div>
   );
 };
