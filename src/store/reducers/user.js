@@ -1,10 +1,9 @@
 const users = (state = {}, action) => {
-  switch (action.type) {
-     case 'LOGGEDIN':
-      const newState = action.payload;
-      return newState;
-    default:
-      return state;
-  }
-};
-export default users;
+    switch (action.type) {
+       case 'LOGGEDIN':
+        return action.payload;
+      default:
+        return state;
+    }
+  };
+  export default users;
