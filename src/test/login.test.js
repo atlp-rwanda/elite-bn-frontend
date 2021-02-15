@@ -1,38 +1,65 @@
 import React from 'react';
-import { configure, shallow, mount } from 'enzyme';
-import Login from '../components/Login';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import Enzyme from 'enzyme';
+import { fireEvent, render, waitFor, cleanup, screen, act } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Adapter from 'enzyme-adapter-react-16';
+import MutationObserver from 'mutation-observer';
 import { Provider } from 'react-redux';
-import store from '../store'
-import { BrowserRouter } from 'react-router-dom'
-
-configure({ adapter: new Adapter() });
-
-describe('test case for login ', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = mount(<Provider store={store}>
-      <BrowserRouter> <Login /></BrowserRouter>
-    </Provider>);
+import Login from '../../src/components/Login';
+import store from '../store/index';
+global.MutationObserver = MutationObserver;
+Enzyme.configure({ adapter: new Adapter() });
+const mockRegister = jest.fn((email, password) => {
+  return Promise.resolve({ email, password });
+});
+describe('Test <Login />', () => {
+  beforeEach(async () => {
+    await act(async () =>
+      render(
+        <Provider store={store}>
+          <Router>
+            <Login handle={mockRegister} />
+          </Router>
+        </Provider>
+      )
+    );
+    act(() => {
+      jest.useFakeTimers();
+      jest.advanceTimersByTime(1000);
+    });
   });
 
-  
 
-  test('login check with wrong data', () => {
-    wrapper.find('input[type="text"]').simulate('change', { target: { name: 'email', value: 'eric@example.com' } });
+  afterEach(cleanup);
+  it('should contains form', () => {
+    expect(screen.queryByTestId('form')).toBeTruthy();
+  });
 
-    wrapper.find('input[type="password"]').simulate('change', { target: { name: 'password', value: 'samplepassword123' } });
-    wrapper.find('form').simulate('submit');
-  })
+  it('should display required error when value is invalid', async () => {
+    expect(screen.getAllByRole('button', { name: /Login/i })).toHaveLength(1);
+    await act(async () => {
+      await fireEvent.click(screen.getByRole('button', { name: /Login/i }));
+    });
+    // expect(screen.getAllByRole('alert')).toHaveLength(4);
+  });
+  it('should handle continue with google', async () => {
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /Google/i }));
+    });
+  });
+  it('should handle continue with facebook', async () => {
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /Facebook/i }));
+    });
+  });
+  it('should submit the form', async () => {
+    await act(async () => {
+      fireEvent.submit();
+    });
+  });
 
 
-  test('login check with right data', () => {
-    wrapper.find('input[type="text"]').simulate('change', { target: { name: 'email', value: 'eric74@example.com' } });
-
-    wrapper.find('input[type="password"]').simulate('change', { target: { name: 'password', value: 'samplepassword' } });
-    wrapper.find('form').simulate('submit');
-  })
-
-})
+});
 
 

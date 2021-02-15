@@ -14,12 +14,12 @@ const socialSignin = () => (
   <div>
     <Button clicked={() => googleHandler()} btnType="GoogleSignup">
       <img className="h-5 w-5 mr-3" src={googleIcon} alt="google" />
-      <p> Sign In with google</p>
+      <p> Continue with google</p>
     </Button>
 
     <Button clicked={() => facebookHandler()} btnType="fbSignup">
       <img className="h-5 w-5 mr-3" src={fbIcon} alt="facebook" />
-      <p> Sign In with facebook </p>
+      <p> Continue with facebook </p>
     </Button>
   </div>
 );

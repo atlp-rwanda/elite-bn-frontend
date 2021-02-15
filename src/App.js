@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes/index';
 import getUserInfo from './utils/getUserInfo';
-import {useDispatch} from 'react-redux';
- 
+import { useDispatch } from 'react-redux';
+
 
 
 function App() {

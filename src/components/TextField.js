@@ -1,22 +1,25 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 
-export const TextField = ({ label, changeValue,name,placeholder,...props }) => {
- 
+
+export const TextField = ({ label, changeValue, name, placeholder, isLoaded, ...props }) => {
+
   return (
     <div className="px-8 py-5">
-      {/* <label className="block text-gray-700 text-sm font-bold mb-2  py-3 "></label> */}
-      <input
-        onChange={changeValue}
-        type="text"
-        className="rounded w-full text-gray-700 border border-gray-100 py-2  px-3  spacey-3 border border-gray-100"
-        name={name}
-        placeholder={placeholder}
-        {...props}
-        autoComplete="off"
-      />
-      <div className="text-red-500" id={`${label}error`}>
-      </div>
+
+
+      {!isLoaded ? (<Skeleton height={30} />) : (
+        <input
+          onChange={changeValue}
+          type="text"
+          className="rounded  shadow-md w-full text-gray-700 border border-gray-100 py-2  px-3  spacey-3 border border-gray-100"
+          name={name}
+          placeholder={placeholder}
+          {...props}
+          autoComplete="off"
+        />)}
+      <button></button>
     </div>
   );
 };

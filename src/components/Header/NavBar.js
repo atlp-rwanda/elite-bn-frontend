@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NavBar = ({ toggle }) => (
   <div className="bg-blak-100 md:px-20 px-5 p-2 h-20 md:p-5">
     <nav className="flex justify-between">
-      <div className="flex text-black-50">
+      <div className="flex text-gray-500">
         <h1 className=" border-b-2 text-xl">
           <span className="md:text-2xl font-bold">B</span>
           arefoot-Nomad
