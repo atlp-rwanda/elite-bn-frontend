@@ -37,7 +37,7 @@ const ResetPassword = (props) => {
   }, []);
 
   const forgotPassword = async () => {
-    axios.post('https://elite-barefoot-api.herokuapp.com/api/v1/users/forgotPassword', { email }).then((response) => {
+    axios.post('https://elite-staging.herokuapp.com/api/v1/users/forgotPassword', { email }).then((response) => {
       setToken(response.data.data.token);
       setMessage(response.data.message);
       setError(false);

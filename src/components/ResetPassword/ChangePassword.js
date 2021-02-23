@@ -45,7 +45,7 @@ const ChangePassword = ({ token }) => {
       });
     }
     if (password.length >= 6 && password === confirm) {
-      axios.put(`https://elite-barefoot-api.herokuapp.com/api/v1/users/resetpassword/${token}`, { password }).then((response) => {
+      axios.put(`https://elite-staging.herokuapp.com/api/v1/users/resetpassword/${token}`, { password }).then((response) => {
         toast.success('Success Reset', {
           position: 'top-right',
           autoClose: 4000,

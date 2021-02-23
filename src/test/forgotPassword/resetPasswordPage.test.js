@@ -1,15 +1,20 @@
 import React from 'react';
+import { jest } from '@jest/globals';
+import axios from 'axios';
 import { shallow, mount } from 'enzyme';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Adapter from 'enzyme-adapter-react-16';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
+import { render, fireEvent, act } from '@testing-library/react';
 import rootReducer from '../../store';
+import '@testing-library/jest-dom/extend-expect';
 
 import ResetPassword from '../../components/ResetPassword/ResetPassword';
-import HomeNavComponent from '../../components/';
-import FooterOne from '../../components/auth/resetPassword/FooterOne';
+
+jest.mock('axios');
 
 // Enzyme.configure({ adapter: new Adapter() });
 
@@ -50,44 +55,72 @@ beforeEach(() => {
   );
 });
 describe('ResetPassword page Components', () => {
-  it('Homenav should render without throwing an error', () => {
-    expect(
-      shallow(
-        <Provider store={store1}>
-          <ResetPassword />
-        </Provider>,
-      ).contains(<HomeNavComponent />),
-    );
-  });
-  it('Footer should render without throwing an error', () => {
-    expect(
-      shallow(
-        <Provider store={store1}>
-          <ResetPassword />
-        </Provider>,
-      ).contains(<FooterOne />),
-    );
-  });
-  it('Should submit valid forgot password form Successfully', () => {
-    const store = mockStore({});
-    const wrapper = shallow(
-      <Provider store={store}>
-        <ResetPassword />
-      </Provider>,
-    );
-    const handleSubmitSpy = jest.spyOn(wrapper.instance(), 'handleSubmit');
-    // const forgotPasswordSpy = jest.spyOn(component.instance().props, 'forgotPassword');
-    const email = { target: { name: 'email', value: 'pextech@email.com' } };
+  it(' contains input', () => {
+    jest.useFakeTimers();
+    act(() => {
+      render(
+        <Router>
+          <Provider store={store1}>
+            <ResetPassword />
+          </Provider>
+        </Router>,
 
-    wrapper.find('[type="email"]').simulate('change', email);
-    wrapper.find('[type="submit"]').simulate('click');
-    wrapper.find('LayoutForms').simulate('submit', {
-      preventDefault() {},
-      target: { checkValidity: () => true },
+      );
     });
-    expect(handleSubmitSpy).toHaveBeenCalled();
-    // eslint-disable-next-line max-len
-    // expect(component.state()).toEqual({ checkError: 'was-validated', email: 'example@email.com' });
-    // expect(forgotPasswordSpy).toHaveBeenCalled();
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    const { getByTestId } = render(
+      <Router>
+        <Provider store={store1}>
+          <ResetPassword />
+        </Provider>
+      </Router>,
+
+    );
+    const input = getByTestId('input');
+
+    expect(input.children.length).toBe(0);
+
+    jest.useRealTimers();
+
+    // expect(setTimeout).toHaveBeenCalledTimes(1);
+  });
+  it('submit inputted element', () => {
+    jest.useFakeTimers();
+    act(() => {
+      render(
+        <Router>
+          <Provider store={store1}>
+            <ResetPassword />
+          </Provider>
+        </Router>,
+
+      );
+    });
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    const { getByPlaceholderText } = render(
+      <Router>
+        <Provider store={store1}>
+          <ResetPassword />
+        </Provider>
+      </Router>,
+
+    );
+    const node = getByPlaceholderText('Your email');
+
+    fireEvent.change(node, { target: { value: 'mcstain1639@gmail.com' } });
+    const { getByText } = render(
+      <Router>
+        <Provider store={store1}>
+          <ResetPassword />
+        </Provider>
+      </Router>,
+    );
+    const node2 = getByText('Reset your password');
+    fireEvent.click(node2);
   });
 });

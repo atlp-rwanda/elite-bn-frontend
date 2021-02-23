@@ -30,7 +30,7 @@ export default function login() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -73,6 +73,7 @@ export default function login() {
                     <div className="py-6">
                       <div className="">
                         <TextField
+                          data-testid="input"
                           isLoaded={loaded}
                           name="email"
                           id="Email"
@@ -83,6 +84,7 @@ export default function login() {
                       </div>
                       <div className="">
                         <TextField
+                          data-testid="input"
                           isLoaded={loaded}
                           id="Password"
                           name="password"
