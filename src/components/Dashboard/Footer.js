@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className="col-span-full bg-white  shadow-2xl col-start-3 col-end-13  flex-col h-full  w-full flex p-4 ">
+    <div className="col-span-full bg-white  shadow-2xl col-start-3 col-end-13 mt-96 flex-col h-full  w-full flex p-4 ">
       <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-2">
         <div className="flex flex-col">
           <h2 className="flex cursor-pointer">

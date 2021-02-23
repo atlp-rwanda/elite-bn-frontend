@@ -5,11 +5,13 @@ import userReducer from './reducers/user';
 import userProfileReducer from './reducers/ProfileReducer';
 import setAuthorization from '../utils/setAuthorization';
 import authReducer from './reducers/auth';
+import accomodation from './reducers/accomodations';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   userProfile: userProfileReducer,
+  accomodation: accomodation,
 });
 const logger = () => (next) => (action) => {
   const result = next(action);

@@ -3,8 +3,7 @@ import { successToast, errorToast } from '../../utils/toast';
 import setAthorizationToken from '../../utils/setAuthorization';
 
 const handle = async (state, history, dispatch) => {
-  axios
-    .post('http://localhost:5000/api/v1/users/signin', state)
+  axios.post('http://localhost:5000/api/v1/users/signin', state)
     .then((response) => {
       const { token } = response.data.data;
       const { userInfo } = response.data.data;

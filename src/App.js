@@ -9,7 +9,7 @@ function App() {
   getUserInfo(dispatch);
   return (
     <Router>
-      <div className="App bg-gray-100">
+      <div className="">
         <Routes />
       </div>
     </Router>

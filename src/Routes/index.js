@@ -5,6 +5,8 @@ import UpdateProfile from '../components/Dashboard/pages/UpdateProfile';
 import Home from '../components/Home';
 import Auth from '../containers/Auth/Auth';
 import login from '../components/Login';
+import createAccomodation from '../components/Dashboard/Accomodation/createAccomodation';
+import viewAccomodation from '../components/Dashboard/Accomodation/viewAccomodation';
 
 function index() {
   return (
@@ -14,6 +16,8 @@ function index() {
       <Route exact path="/dashboard/profile/" component={SingleProfile} />
       <Route exact path="/login" component={login} />
       <Route exact path="/dashboard/profile/update/" component={UpdateProfile} />
+      <Route exact path="/dashboard/Accomodation/createAccomodation/" component={createAccomodation} />
+      <Route exact path="/dashboard/Accomodation/viewAccomodation/" component={viewAccomodation} />
     </Switch>
   );
 }
