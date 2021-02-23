@@ -5,7 +5,7 @@ import getUserInfo from './utils/getUserInfo';
 import { useDispatch } from 'react-redux';
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   getUserInfo(dispatch);
   return (
     <Router>

@@ -4,8 +4,12 @@ import setAuthorizationToken from '../../utils/setAuthorization';
 import { LOGIN_SUCCESS } from '../actions/ActionTypes';
 
 const handle = async (state, history, dispatch) => {
+<<<<<<< HEAD
   axios
     .post('https://elite-staging.herokuapp.com/api/v1/users/signin', state)
+=======
+  axios.post('https://elite-barefoot-api.herokuapp.com/api/v1/users/signin', state)
+>>>>>>> 4b21676... rebased
     .then((response) => {
       const { token } = response.data.data;
       const { data } = response.data;

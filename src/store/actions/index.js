@@ -1,3 +1,5 @@
-export { auth, authStart, authFail, authSuccess } from './auth';
+export {
+  auth, authStart, authFail, authSuccess,
+} from './auth';
 
-export { logoutSuccess, logoutFailed, logoutRequest } from './LogoutAction';
+export { logoutSuccess, logoutFailed } from './LogoutAction';

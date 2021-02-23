@@ -36,7 +36,7 @@ export default function login() {
   }, []);
 
   const handleInput = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setState({
       ...state,
       [e.target.name]: value,
@@ -105,7 +105,7 @@ export default function login() {
                         </button>
                       )}
                     </div>
-                    <div className="flex px-8 justify-end text-purple-600 py-6 text-sm hover:text-purple-700 hover:underline hover:cursor-pointer mb-6">
+                    <div className="flex px-8 justify-end text-primary-100 py-6 text-sm hover:text-purple-700 hover:underline hover:cursor-pointer mb-6">
                       <Link to="/reset-password">Forgot password</Link>
                     </div>
                     <div className="space-y-6">
