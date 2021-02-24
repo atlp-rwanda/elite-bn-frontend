@@ -1,7 +1,7 @@
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
-  <SkeletonTheme color="#ddd" highlightColor="#444" />;
+<SkeletonTheme color="#ddd" highlightColor="#444" />;
 const ResetPasswordSkeleton = () => (
   <section className="bg-gray-100 p-6">
     <div className="bg-white rounded-2xl items-center content-center shadow-md p-6 sm:p-2">

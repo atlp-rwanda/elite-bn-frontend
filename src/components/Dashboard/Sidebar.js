@@ -1,17 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react'
-import {
-  AiFillCaretDown,
-  AiOutlineCaretRight,
-  AiOutlineRight,
-} from 'react-icons/ai'
-import { FaTimesCircle, FaUserShield } from 'react-icons/fa'
-import { RiUserSearchFill } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { AiFillCaretDown, AiOutlineCaretRight, AiOutlineRight } from 'react-icons/ai';
+import { FaTimesCircle, FaUserShield } from 'react-icons/fa';
+import { RiUserSearchFill, RiCustomerService2Fill } from 'react-icons/ri';
+import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const SideBar = () => {
-  const [down1, setDown1] = useState(false)
-  const [sideBar, setSideBar] = useState(false)
+const SideBar = ({ down }) => {
+  const [down1, setDown1] = useState(down);
+  const [sideBar, setSideBar] = useState(false);
 
   return (
     <>
@@ -25,11 +22,7 @@ const SideBar = () => {
             <span>Barefoot-Nomad</span>
             <div className="h-0.5 my-1 bg-white w-4/5 text-center m-auto" />
           </h1>
-          <h1
-            className={`${
-              sideBar ? 'hidden' : 'block'
-            } text-3xl text-center  lg:hidden`}
-          >
+          <h1 className={`${sideBar ? 'hidden' : 'block'} text-3xl text-center  lg:hidden`}>
             <span className="flex justify-center mb-2 items-center">
               <span> B</span>
               <AiOutlineRight
@@ -52,20 +45,14 @@ const SideBar = () => {
             >
               <h1 className="flex">
                 <FaUserShield className="mt-1 mr-1" />
-                <span className={`${sideBar ? 'block' : 'hidden'}  lg:block`}>
-                  Users
-                </span>
+                <span className={`${sideBar ? 'block' : 'hidden'}  lg:block`}>Users</span>
               </h1>
               <AiFillCaretDown
-                className={`${
-                  down1 ? 'block' : 'hidden'
-                } up cursor-pointer mt-1.5 text-sm`}
+                className={`${down1 ? 'block' : 'hidden'} up cursor-pointer mt-1.5 text-sm`}
                 onClick={() => setDown1(!down1)}
               />
               <AiOutlineCaretRight
-                className={`${
-                  down1 ? 'hidden' : 'block'
-                } dw cursor-pointer mt-1.5 text-sm`}
+                className={`${down1 ? 'hidden' : 'block'} dw cursor-pointer mt-1.5 text-sm`}
                 onClick={() => setDown1(!down1)}
               />
             </div>
@@ -76,15 +63,19 @@ const SideBar = () => {
             >
               <li className="flex transition duration-500 ease-in-out  ml-8 py-1  transform hover:translate-x-3 hover:scale-110  w-full ">
                 <RiUserSearchFill className="ml-1 mt-0.5" />
-                <Link to="/dashboard/profile/">
-                  <span
-                    className={`${
-                      sideBar ? 'block' : 'hidden'
-                    }  text-sm ml-2 md:block`}
-                  >
+                <NavLink to="/dashboard/profile/">
+                  <span className={`${sideBar ? 'block' : 'hidden'}  text-sm ml-2 md:block`}>
                     User profile
                   </span>
-                </Link>
+                </NavLink>
+              </li>
+              <li className="flex transition duration-500 ease-in-out  ml-8 py-1  transform hover:translate-x-3 hover:scale-110  w-full ">
+                <RiCustomerService2Fill className="ml-1 mt-0.5" />
+                <NavLink to="/dashboard/users/">
+                  <span className={`${sideBar ? 'block' : 'hidden'}  text-sm ml-2 md:block`}>
+                    Assign Users
+                  </span>
+                </NavLink>
               </li>
             </ul>
           </article>
@@ -100,7 +91,15 @@ const SideBar = () => {
         <FaTimesCircle />
       </span>
     </>
-  )
-}
+  );
+};
 
-export default SideBar
+SideBar.propTypes = {
+  down: PropTypes.bool,
+};
+
+SideBar.defaultProps = {
+  down: false,
+};
+
+export default SideBar;

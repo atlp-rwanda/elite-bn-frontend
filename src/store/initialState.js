@@ -17,3 +17,9 @@ export const resetInitialState = {
 export const changeInitialState = {
   password: '',
 };
+
+export const initialAssignedUsersToManagers = {
+  users: [],
+  loading: false,
+  assigned: null,
+};

@@ -21,8 +21,10 @@ jest.mock('axios');
 const mockStore = configureMockStore();
 const store1 = mockStore({});
 
-let mainState; let props; let testStore; let
-  setUp;
+let mainState;
+let props;
+let testStore;
+let setUp;
 beforeEach(() => {
   const middlewares = [thunk];
   mainState = {
@@ -43,7 +45,9 @@ beforeEach(() => {
   };
 
   testStore = (state) => {
-    const createStoreWithMiddleware = () => { applyMiddleware(...middlewares)(createStore); };
+    const createStoreWithMiddleware = () => {
+      applyMiddleware(...middlewares)(createStore);
+    };
     return createStoreWithMiddleware(rootReducer, state);
   };
 
@@ -51,7 +55,7 @@ beforeEach(() => {
   const wrapper = shallow(
     <Provider store={store}>
       <ResetPassword />
-    </Provider>,
+    </Provider>
   );
 });
 describe('ResetPassword page Components', () => {
@@ -63,8 +67,7 @@ describe('ResetPassword page Components', () => {
           <Provider store={store1}>
             <ResetPassword />
           </Provider>
-        </Router>,
-
+        </Router>
       );
     });
     act(() => {
@@ -75,8 +78,7 @@ describe('ResetPassword page Components', () => {
         <Provider store={store1}>
           <ResetPassword />
         </Provider>
-      </Router>,
-
+      </Router>
     );
     const input = getByTestId('input');
 
@@ -94,8 +96,7 @@ describe('ResetPassword page Components', () => {
           <Provider store={store1}>
             <ResetPassword />
           </Provider>
-        </Router>,
-
+        </Router>
       );
     });
     act(() => {
@@ -107,8 +108,7 @@ describe('ResetPassword page Components', () => {
         <Provider store={store1}>
           <ResetPassword />
         </Provider>
-      </Router>,
-
+      </Router>
     );
     const node = getByPlaceholderText('Your email');
 
@@ -118,7 +118,7 @@ describe('ResetPassword page Components', () => {
         <Provider store={store1}>
           <ResetPassword />
         </Provider>
-      </Router>,
+      </Router>
     );
     const node2 = getByText('Reset your password');
     fireEvent.click(node2);

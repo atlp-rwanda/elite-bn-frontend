@@ -37,25 +37,30 @@ const ResetPassword = (props) => {
   }, []);
 
   const forgotPassword = async () => {
-    axios.post('https://elite-staging.herokuapp.com/api/v1/users/forgotPassword', { email }).then((response) => {
-      setToken(response.data.data.token);
-      setMessage(response.data.message);
-      setError(false);
-      setSubmitted(true);
-      return response;
-    }).catch(() => {
-      setError(true);
-      toast.error('Email is not recognized', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+    axios
+      .post('https://elite-staging.herokuapp.com/api/v1/users/forgotPassword', {
+        email,
+      })
+      .then((response) => {
+        setToken(response.data.data.token);
+        setMessage(response.data.message);
+        setError(false);
+        setSubmitted(true);
+        return response;
+      })
+      .catch(() => {
+        setError(true);
+        toast.error('Email is not recognized', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setSubmitted(false);
       });
-      setSubmitted(false);
-    });
   };
   const handleSubmit = (e) => {
     if (email) {
@@ -83,28 +88,51 @@ const ResetPassword = (props) => {
       <Navbar toggle={toggle} />
       <DropMenu isOpen={isOpen} toggle={toggle} />
       {loading && <ResetPasswordSkeleton />}
-      { !loading && !submitted && (
-      <section className="bg-gray-100 p-6">
-        <div className="bg-white rounded-2xl items-center content-center shadow-md p-6 sm:p-2">
-          <div className="items-center md:m-6 md:p-6 xs:m-2 xs:p-2">
-            <h3 className="text-primary-100 text-2xl content-center text-center mt-5">Reset password</h3>
-            <form
-              onSubmit={handleSubmit}
-              className="content-center m-3 p-3 md:m-0.5 flex justify-center h-auto flex-col "
-            >
-              {/* <div className="text-md content-center text-center m-2">
+      {!loading && !submitted && (
+        <section className="bg-gray-100 p-6">
+          <div className="bg-white rounded-2xl items-center content-center shadow-md p-6 sm:p-2">
+            <div className="items-center md:m-6 md:p-6 xs:m-2 xs:p-2">
+              <h3 className="text-primary-100 text-2xl content-center text-center mt-5">
+                Reset password
+              </h3>
+              <form
+                onSubmit={handleSubmit}
+                className="content-center m-3 p-3 md:m-0.5 flex justify-center h-auto flex-col "
+              >
+                {/* <div className="text-md content-center text-center m-2">
               </div> */}
-              <div className="m-3 p-3 flex flex-col justify-center items-center">
-                <input data-testid="input" type="email" name="email" id="email" placeholder="Your email" value={email} onChange={(e) => { setEmail(e.target.value); }} className="w-1/2 sm:w-full border-primary-100 rounded content-center p-4 m-4 center shadow-md h-10 text-primary-100" required />
-                <button type="submit" value="Submit" name="submit" className="w-1/2 sm:w-full border-primary-100 bg-primary md:hover:bg-purple-500 m-4 rounded content-center center shadow-md h-10 text-white">Reset your password</button>
-              </div>
-            </form>
+                <div className="m-3 p-3 flex flex-col justify-center items-center">
+                  <input
+                    data-testid="input"
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Your email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    className="w-1/2 sm:w-full border-primary-100 rounded content-center p-4 m-4 center shadow-md h-10 text-primary-100"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    value="Submit"
+                    name="submit"
+                    className="w-1/2 sm:w-full border-primary-100 bg-primary md:hover:bg-purple-500 m-4 rounded content-center center shadow-md h-10 text-white"
+                  >
+                    Reset your password
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-        <ToastContainer />
-      </section>
+          <ToastContainer />
+        </section>
       )}
-      {error !== true && submitted === true && (token !== undefined || token !== '') && <ChangePassword token={token} /> }
+      {error !== true && submitted === true && (token !== undefined || token !== '') && (
+        <ChangePassword token={token} />
+      )}
       <FooterOne />
     </>
   );

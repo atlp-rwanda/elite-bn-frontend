@@ -1,14 +1,10 @@
-import {
-  RESET_FAIL,
-  RESET_PASSWORD, RESET_SUCESS,
-
-} from '../../constants/actions';
+import { RESET_FAIL, RESET_PASSWORD, RESET_SUCESS } from '../../constants/actions';
 
 import { resetInitialState } from '../initialState';
 import updateObject from '../utility';
 
-const resetStart = (state, action) => updateObject(state,
-  {
+const resetStart = (state, action) =>
+  updateObject(state, {
     email: action.email,
     error: action.error,
     loading: action.loading,
@@ -16,18 +12,20 @@ const resetStart = (state, action) => updateObject(state,
     message: action.message,
   });
 
-const resetSuccess = (state, action) => updateObject(state, {
-  token: action.token,
-  email: action.email,
-  error: null,
-  loading: false,
-  message: action.message,
-});
+const resetSuccess = (state, action) =>
+  updateObject(state, {
+    token: action.token,
+    email: action.email,
+    error: null,
+    loading: false,
+    message: action.message,
+  });
 
-const resetFail = (state, action) => updateObject(state, {
-  error: action.error,
-  loading: false,
-});
+const resetFail = (state, action) =>
+  updateObject(state, {
+    error: action.error,
+    loading: false,
+  });
 
 const reducer = (state = resetInitialState, action) => {
   switch (action.type) {

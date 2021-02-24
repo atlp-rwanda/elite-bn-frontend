@@ -13,7 +13,7 @@ describe('rendering components', () => {
         <div className="App bg-gray-100">
           <Routes />
         </div>
-      </Router>,
+      </Router>
     );
   });
 });

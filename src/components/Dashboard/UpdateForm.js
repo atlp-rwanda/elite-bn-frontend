@@ -1,27 +1,20 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
-import Skeleton from 'react-loading-skeleton'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import validationSchema from './validations/userProfileValidation'
-import svg from '../../assets/833.svg'
+import React, { useEffect, useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import validationSchema from './validations/userProfileValidation';
+import svg from '../../assets/833.svg';
 
 const UpdateForm = ({ userData }) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    preferedLanguage,
-    officeAddres,
-    profilePicture,
-  } = userData
-  const [loading, setLoading] = useState(true)
-  const [spinner, setSpinner] = useState(false)
+  const { firstName, lastName, email, preferedLanguage, officeAddres, profilePicture } = userData;
+  const [loading, setLoading] = useState(true);
+  const [spinner, setSpinner] = useState(false);
 
   const initialValues = {
     firstName,
@@ -30,50 +23,44 @@ const UpdateForm = ({ userData }) => {
     preferedLanguage,
     officeAddres,
     profilePicture,
-  }
+  };
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
-  const dispatch = useDispatch()
+      setLoading(false);
+    }, 2000);
+  }, []);
+  const dispatch = useDispatch();
 
-  const history = useHistory()
+  const history = useHistory();
   const onSubmit = (values) => {
-    const data = new FormData()
-    data.append('profilePicture', values.profilePicture)
-    data.append('firstName', values.firstName)
-    data.append('lastName', values.lastName)
-    data.append('email', values.email)
-    data.append('preferedLanguage', values.preferedLanguage)
-    data.append('officeAddres', values.officeAddres)
+    const data = new FormData();
+    data.append('profilePicture', values.profilePicture);
+    data.append('firstName', values.firstName);
+    data.append('lastName', values.lastName);
+    data.append('email', values.email);
+    data.append('preferedLanguage', values.preferedLanguage);
+    data.append('officeAddres', values.officeAddres);
 
     axios
-      .patch(
-        `https://elite-staging.herokuapp.com/api/v1/users/updateProfile/`,
-        data,
-      )
+      .patch(`https://elite-staging.herokuapp.com/api/v1/users/updateProfile/`, data)
       .then((res) => {
-        dispatch({ type: 'UPDATE_SUCCESS', payload: res })
+        dispatch({ type: 'UPDATE_SUCCESS', payload: res });
         setTimeout(() => {
-          history.push('/dashboard/profile')
-        }, 3000)
-        toast.success('User Profile updated successfully')
+          history.push('/dashboard/profile');
+        }, 3000);
+        toast.success('User Profile updated successfully');
       })
       .catch((error) => {
-        dispatch({ type: 'UPDATE_FAILED', payload: error })
+        dispatch({ type: 'UPDATE_FAILED', payload: error });
         toast.error(
-          'Image is required and in this quality jpeg,jpg,png and fileSize smaller than 1Mb. ',
-        )
-      })
-  }
+          'Image is required and in this quality jpeg,jpg,png and fileSize smaller than 1Mb. '
+        );
+      });
+  };
 
   return (
     <>
-      <div
-        id="wrapper"
-        className="col-start-3    row-start-2  col-end-13 p-4 md:p-12"
-      >
+      <div id="wrapper" className="col-start-3    row-start-2  col-end-13 p-4 md:p-12">
         <ToastContainer />
         <h1 className="text-blue-600 h1 font-bold text-xl  md:text-3xl mb-4 w-full  md:w-2/4">
           Update profile
@@ -100,33 +87,19 @@ const UpdateForm = ({ userData }) => {
                       name="profilePicture"
                       id="profilePicture"
                       onChange={(event) =>
-                        formProps.setFieldValue(
-                          'profilePicture',
-                          event.target.files[0],
-                        )
+                        formProps.setFieldValue('profilePicture', event.target.files[0])
                       }
                     />
                     <span className={`${loading ? 'block' : 'hidden'}`}>
                       <Skeleton width={150} height={30} />
                     </span>
 
-                    <ErrorMessage
-                      className="text-red-600"
-                      name="profilePicture"
-                      component="span"
-                    />
+                    <ErrorMessage className="text-red-600" name="profilePicture" component="span" />
                   </div>
                 </div>
                 <div className="names  flex flex-col md:flex-row  ">
-                  <div
-                    className={`${
-                      loading ? 'hidden' : 'block'
-                    } w-full md:w-6/12`}
-                  >
-                    <label
-                      htmlFor="firstName"
-                      className="capitalize text-gray-500 pt-2  "
-                    >
+                  <div className={`${loading ? 'hidden' : 'block'} w-full md:w-6/12`}>
+                    <label htmlFor="firstName" className="capitalize text-gray-500 pt-2  ">
                       {' '}
                       FirstName{' '}
                     </label>
@@ -136,17 +109,9 @@ const UpdateForm = ({ userData }) => {
                       name="firstName"
                       className="outline-none w-full border my-2  shadow-md bg-white rounded-sm py-2 px-2"
                     />
-                    <ErrorMessage
-                      className="text-red-600"
-                      name="firstName"
-                      component="span"
-                    />
+                    <ErrorMessage className="text-red-600" name="firstName" component="span" />
                   </div>
-                  <div
-                    className={`${
-                      loading ? 'block' : 'hidden'
-                    } my-4 w-full md:w-6/12`}
-                  >
+                  <div className={`${loading ? 'block' : 'hidden'} my-4 w-full md:w-6/12`}>
                     <Skeleton height={45} />
                   </div>
                   <div
@@ -154,10 +119,7 @@ const UpdateForm = ({ userData }) => {
                       loading ? 'hidden' : 'block'
                     } controlInput w-full md:w-6/12 m-o md:ml-8`}
                   >
-                    <label
-                      htmlFor="lastName"
-                      className="capitalize text-gray-500 pt-2  "
-                    >
+                    <label htmlFor="lastName" className="capitalize text-gray-500 pt-2  ">
                       {' '}
                       lastName{' '}
                     </label>
@@ -167,30 +129,17 @@ const UpdateForm = ({ userData }) => {
                       id="lastName"
                       className="outline-none w-full border my-2  shadow-md bg-white  rounded-sm py-2 px-2"
                     />
-                    <ErrorMessage
-                      className="text-red-600"
-                      name="lastName"
-                      component="span"
-                    />{' '}
+                    <ErrorMessage className="text-red-600" name="lastName" component="span" />{' '}
                   </div>
                   <div
-                    className={`${
-                      loading ? 'block' : 'hidden'
-                    } my-4 w-full md:w-6/12 ml-0 md:ml-8`}
+                    className={`${loading ? 'block' : 'hidden'} my-4 w-full md:w-6/12 ml-0 md:ml-8`}
                   >
                     <Skeleton height={45} />
                   </div>
                 </div>
                 <div className="names flex flex-col  md:flex-row  mt-2 ">
-                  <div
-                    className={`${
-                      loading ? 'hidden' : 'block'
-                    } w-full md:w-6/12`}
-                  >
-                    <label
-                      htmlFor="firstName"
-                      className="capitalize text-gray-500 pt-2  "
-                    >
+                  <div className={`${loading ? 'hidden' : 'block'} w-full md:w-6/12`}>
+                    <label htmlFor="firstName" className="capitalize text-gray-500 pt-2  ">
                       {' '}
                       email{' '}
                     </label>
@@ -199,17 +148,9 @@ const UpdateForm = ({ userData }) => {
                       name="email"
                       className="outline-none w-full border my-4 shadow-md bg-white   rounded-sm py-2 px-2"
                     />
-                    <ErrorMessage
-                      className="text-red-600"
-                      name="email"
-                      component="span"
-                    />
+                    <ErrorMessage className="text-red-600" name="email" component="span" />
                   </div>
-                  <div
-                    className={`${
-                      loading ? 'block' : 'hidden'
-                    } my-4 w-full md:w-6/12`}
-                  >
+                  <div className={`${loading ? 'block' : 'hidden'} my-4 w-full md:w-6/12`}>
                     <Skeleton height={45} />
                   </div>
                   <div
@@ -217,10 +158,7 @@ const UpdateForm = ({ userData }) => {
                       loading ? 'hidden' : 'block'
                     } controlInput w-full md:w-6/12 m-o md:ml-8`}
                   >
-                    <label
-                      htmlFor="firstName"
-                      className="capitalize text-gray-500 pt-2  "
-                    >
+                    <label htmlFor="firstName" className="capitalize text-gray-500 pt-2  ">
                       {' '}
                       Language{' '}
                     </label>
@@ -236,19 +174,14 @@ const UpdateForm = ({ userData }) => {
                     />
                   </div>
                   <div
-                    className={`${
-                      loading ? 'block' : 'hidden'
-                    } my-4 w-full md:w-6/12 ml-0 md:ml-8`}
+                    className={`${loading ? 'block' : 'hidden'} my-4 w-full md:w-6/12 ml-0 md:ml-8`}
                   >
                     <Skeleton height={45} />
                   </div>
                 </div>
                 <div className="names flex flex-col md:flex-row mt-2   ">
                   <div className={`${loading ? 'hidden' : 'block'} w-full`}>
-                    <label
-                      htmlFor="firstName"
-                      className="capitalize text-gray-500 pt-2  "
-                    >
+                    <label htmlFor="firstName" className="capitalize text-gray-500 pt-2  ">
                       {' '}
                       Address{' '}
                     </label>
@@ -257,15 +190,9 @@ const UpdateForm = ({ userData }) => {
                       name="officeAddres"
                       className="outline-none w-full border my-4  shadow-md bg-white  rounded-sm py-2 px-2"
                     />
-                    <ErrorMessage
-                      className="text-red-600"
-                      name="officeAddres"
-                      component="span"
-                    />
+                    <ErrorMessage className="text-red-600" name="officeAddres" component="span" />
                   </div>
-                  <div
-                    className={`${loading ? 'block' : 'hidden'} my-4 w-full`}
-                  >
+                  <div className={`${loading ? 'block' : 'hidden'} my-4 w-full`}>
                     <Skeleton height={45} />
                   </div>
                 </div>
@@ -278,11 +205,7 @@ const UpdateForm = ({ userData }) => {
                 >
                   Update
                 </button>
-                <div
-                  className={`${
-                    loading ? 'block ' : 'hidden'
-                  } mt-4 w-full  md:w-1/5`}
-                >
+                <div className={`${loading ? 'block ' : 'hidden'} mt-4 w-full  md:w-1/5`}>
                   <Skeleton height={35} />
                 </div>
 
@@ -293,11 +216,7 @@ const UpdateForm = ({ userData }) => {
                   } mt-8 w-full  md:w-1/5   items-center justify-center 
                  bg-blue-600  text-white px-3 py-1 rounded-sm cursor-not-allowed`}
                 >
-                  <img
-                    src={svg}
-                    alt="spinner"
-                    className="bg-blue-600 h-3.5 w-3.5 mr-4"
-                  />
+                  <img src={svg} alt="spinner" className="bg-blue-600 h-3.5 w-3.5 mr-4" />
                   Update
                 </button>
               </Form>
@@ -306,7 +225,7 @@ const UpdateForm = ({ userData }) => {
         </Formik>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default UpdateForm
+export default UpdateForm;

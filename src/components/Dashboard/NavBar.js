@@ -37,7 +37,7 @@ const NavBar = ({ userData, LogoutAction }) => {
       <header className="flex justify-between h-16 align-center items-center font-mainFont relative   ">
         <nav className="flex  w-full justify-between ">
           <div className="cursor-pointer">
-            <Link to="/" className="pl-1 md:pl-8">
+            <Link to="/dashboard" className="pl-1 md:pl-8">
               Home
             </Link>
           </div>

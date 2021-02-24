@@ -1,25 +1,20 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
-import { MdEmail, MdLanguage } from 'react-icons/md'
-import { IoLocationSharp } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
-import Skeleton from 'react-loading-skeleton'
-import Pagination from './Pagination'
+import React, { useEffect, useState } from 'react';
+import { MdEmail, MdLanguage } from 'react-icons/md';
+import { IoLocationSharp } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+
+import Pagination from './Pagination';
+
 const Profile = ({ userData }) => {
-  const [loading, setLoading] = useState(true)
-  const {
-    firstName,
-    lastName,
-    email,
-    profilePicture,
-    officeAddres,
-    preferedLanguage,
-  } = userData
+  const [loading, setLoading] = useState(true);
+  const { firstName, lastName, email, profilePicture, officeAddres, preferedLanguage } = userData;
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }, [])
+      setLoading(false);
+    }, 3000);
+  }, []);
   return (
     <>
       <div className="col-start-3    row-start-2  col-end-13 p-4 md:p-12">
@@ -43,9 +38,7 @@ const Profile = ({ userData }) => {
               />
             </div>
             <div
-              className={`${
-                loading ? 'block' : 'hidden '
-              } w-full  relative  h-100`}
+              className={`${loading ? 'block' : 'hidden '} w-full  relative  h-100`}
               alt="background"
             >
               <div className={` ${loading ? 'block' : 'hidden'} w-full `}>
@@ -73,12 +66,7 @@ const Profile = ({ userData }) => {
               </span>
             </h2>
             <div className={`${loading ? 'block' : 'hidden'} `}>
-              <Skeleton
-                animation="wave"
-                variant="text"
-                width={120}
-                height={30}
-              />
+              <Skeleton animation="wave" variant="text" width={120} height={30} />
             </div>
           </div>
           <div
@@ -103,10 +91,7 @@ const Profile = ({ userData }) => {
                   <MdLanguage className="mt-1 mr-0.5  text-blue-600" />
                   Language
                 </h2>
-                <span
-                  id="preferedLanguage"
-                  className=" text-sm ml-2   text-gray-500"
-                >
+                <span id="preferedLanguage" className=" text-sm ml-2   text-gray-500">
                   {preferedLanguage || 'none'}
                 </span>
               </div>
@@ -156,9 +141,7 @@ const Profile = ({ userData }) => {
               <button
                 id="button"
                 type="submit"
-                className={`${
-                  loading ? 'hidden' : 'block'
-                } outline-none mt-8 border-none
+                className={`${loading ? 'hidden' : 'block'} outline-none mt-8 border-none
                focus:border-none  bg-blue-600 hover:bg-indigo-600 text-white px-8 py-1 rounded-sm`}
               >
                 Update
@@ -176,6 +159,6 @@ const Profile = ({ userData }) => {
         <Pagination />
       </div>
     </>
-  )
-}
-export default Profile
+  );
+};
+export default Profile;
