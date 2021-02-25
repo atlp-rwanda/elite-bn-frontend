@@ -4,6 +4,7 @@ import DashBoard from '../components/Dashboard/pages/DashBoard';
 import Home from '../components/Home';
 import Auth from '../containers/Auth/Auth';
 import login from '../components/Login';
+import locations from '../containers/Auth/Location';
 
 function index() {
   return (
@@ -14,6 +15,7 @@ function index() {
       <Route exact path="/login" component={login} />
 
       <Route exact path="/dashboard" component={DashBoard} />
+      <Route exact path="/location" component={locations} />
     </Switch>
   );
 }

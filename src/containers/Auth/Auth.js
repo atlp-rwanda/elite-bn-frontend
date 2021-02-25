@@ -66,10 +66,14 @@ const Auth = (props) => {
       <Header />
       {skeleton && <SignupSkeleton />}
       {!skeleton && (
+
+
         <div className="grid grid-cols-1 md:grid-cols-3 card hover:shadow-lg w-3/4 mx-auto">
           <div className="md:w-4/6 md:col-span-2 py-4 mx-auto">
             <h1 className="text-gray-600 font-medium text-lg mx-4">Get started for free</h1>
             <p className="text-blue-500 mx-4">Over 1000 campanies trust Barefoot-nomad worldwide</p>
+
+
             <div className={classes.Auth}>
               <ToastContainer />
               <form
@@ -152,6 +156,9 @@ const Auth = (props) => {
                 </a>
               </p>
             </div>
+
+
+
           </div>
           <div className="col-start-3 hidden md:block">
             <img
@@ -161,6 +168,9 @@ const Auth = (props) => {
             />
           </div>
         </div>
+
+
+
       )}
       <Footer />
     </div>
