@@ -14,11 +14,8 @@ function index() {
 
       <Route exact path="/login" component={login} />
 
-<<<<<<< HEAD
       <Route exact path="/dashboard" component={DashBoard} />
-=======
       <Route exact path="/reset-password" component={ResetPassword} />
->>>>>>> 4b21676... rebased
     </Switch>
   );
 }

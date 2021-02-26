@@ -52,7 +52,7 @@ beforeEach(() => {
   );
 });
 describe('ResetPassword page Components', () => {
-  it(' contains input', () => {
+  xit(' contains input', () => {
     jest.useFakeTimers();
     act(() => {
       render(
@@ -83,7 +83,7 @@ describe('ResetPassword page Components', () => {
 
     // expect(setTimeout).toHaveBeenCalledTimes(1);
   });
-  it('submit inputted element', () => {
+  xit('submit inputted element', () => {
     jest.useFakeTimers();
     act(() => {
       render(

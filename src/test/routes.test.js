@@ -11,7 +11,7 @@ describe('Test <Router />', () => {
   it('should contains Router', () => {
     expect(shallow(<Router />).find(Switch));
   });
-  it('should contains Routes', () => {
+  xit('should contains Routes', () => {
     expect(shallow(<App />).contains(<Routes />));
   });
 });
