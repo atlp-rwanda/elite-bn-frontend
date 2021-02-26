@@ -1,100 +1,149 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
-import Button from '../../components/UI/Button/Button';
-import classes from './Auth.module.css';
-import 'react-toastify/dist/ReactToastify.css';
-import accomodationImage from '../../assets/images/accomodationImage.png';
-import { auth } from '../../store/actions/index';
-import Header from '../../components/Header/NavBar';
-import Footer from '../../components/Footer/Footer';
-import SocialSignin from '../../components/UI/socialSignin/socialSignin';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import SignupSkeleton from '../../skeletons/Signup/SignupSkeleton';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
-const Auth = (props) => {
-  let registerButton = <Button btnType="Success">Register</Button>;
+export class Location extends Component {
 
-  const [skeleton, setSkeleton] = useState(false);
+  render() {
 
-  useEffect(() => {
-    setSkeleton(true);
-    const timer = setTimeout(() => {
-      setSkeleton(false);
-    }, 2000);
+    const rowClass =
+      "flex flex-col sm:flex-row justify-between items-center sm:items-start py-3 border-t border-gray-300 last:border-none"
+    const leftClass = "w-full sm:w-1/3 font-medium text-center sm:text-left font-normal text-gray-600 text-sm"
+    const rightClass = "flex-1 text-center sm:text-left font-normal text-gray-600 text-sm"
 
-    return () => clearTimeout(timer);
-  }, []);
+    return (
 
-  if (props.loading) {
-    registerButton = (
-      <Button btnType="Success" disabled>
-        <Spinner />
-        Register
-      </Button>
-    );
-  }
-  const { register, handleSubmit, errors, reset } = useForm();
+      <div className=" flex justify-center mt-16 ">
 
-  const onSubmit = async (data) => {
-    await props.onAuth(data.firstName, data.lastName, data.email, data.password);
-    reset();
-  };
+        <div className="rounded overflow-hidden shadow-lg my-2 w-full md:w-5/12  bg-white ">
 
-  const { error, message } = props;
+          <div className="px-6 py-4 w-full">
 
-  useEffect(() => {
-    if (message) {
-      toast.success('Account created successfully, Check your email to verify the account.', {
-        delay: 10000,
-      });
-      props.history.push({
-        pathname: '/login',
-      });
-    } else if (error && error.includes('Network')) {
-      toast.warning('Sorry, We are in troubleshoting the system');
-    } else if (error) {
-      toast.error(props.error);
-    }
-  }, [props.message, props.error]);
+            <div className="w-full divide-y divide-gray-600 ">
+              <div className="mb-7">
 
-  return (
-    <div className="bg-gray-100 w-full m-0">
-      <Header />
-      {skeleton && <SignupSkeleton />}
-      {!skeleton && (
-        <div className="grid grid-cols-1 md:grid-cols-3 card hover:shadow-lg w-3/4 mx-auto">
-          <div className="md:w-4/6 md:col-span-2 py-4 mx-auto">
+                <h1 class="font-medium text-base text-center text-gray-600 ">Specify the accommodation location</h1>
 
-            <div className=""></div>
+                <div className="mt-4">
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600 ">Location Id</label>
+                    <div>
+                      <input class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded  focus:outline-none focus:border-indigo-500 transition-colors" placeholder="First name" type="text" />
+                    </div>
+                  </div>
 
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600">Location Name</label>
+                    <div>
+                      <input class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded  focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Last name" type="text" />
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center">
+                    <button className="bg-white hover:bg-gray-100 px-1 py-1.5 w-full border-2 border-gray-400 rounded shadow font-normal text-gray-600 text-sm">
+                      <Link to="/profile/edit">
+                        Create location
+        </Link>
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div>
+                <h1 class="font-medium text-base text-center text-gray-600  mt-7">Create accommodation</h1>
+
+                <div className="mt-4">
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600 ">Name</label>
+                    <div>
+                      <input class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded  focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Name" type="text" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="description" class="font-medium text-left text-sm mb-2 text-gray-600">
+                      Description
+                   </label>
+                    <div class="mt-1">
+                      <textarea id="about" name="about" rows="3" class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded  focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Description"></textarea>
+                    </div>
+
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600">Location Id</label>
+                    <div>
+                      <input class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded  focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Location Id" type="text" />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600">Facilities</label>
+                    <div>
+                      <input class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Facilities" type="text" />
+                    </div>
+                  </div>
+
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="facilities" class="font-medium text-left text-sm mb-2 text-gray-600">Facilities</label>
+                    <select id="facilities" name="facilities" autocomplete="facilities" class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded focus:outline-none focus:border-indigo-500 transition-colors">
+                      <option>Swimming pool</option>
+                      <option>Bar</option>
+                      <option>Restaurant</option>
+                    </select>
+                  </div>
+
+
+
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600">Cost</label>
+                    <div>
+                      <input class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Cost" type="text" />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600">Capacity</label>
+                    <div>
+                      <input class="w-full px-1 py-1 mb-1 border-2  border-gray-400 rounded  focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Capacity" type="text" />
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="font-medium text-left text-sm mb-2 text-gray-600">
+                      Choose image
+                    </label>
+                    <div>
+                      <input type="file"
+                        id="avatar" name="avatar"
+                        accept="image/png, image/jpeg"></input>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center">
+                    <button className="bg-white hover:bg-gray-100 px-1 py-1.5 w-full border-2 border-gray-400 rounded shadow font-normal text-gray-600 text-sm">
+                      <Link to="/profile/edit">
+                        Create accommodation
+                          </Link>
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
           </div>
-          <div className="col-start-3 hidden md:block">
-            <img
-              src={accomodationImage}
-              alt="accomodation"
-              className="w-full h-full object-cover"
-            />
-          </div>
+
         </div>
-      )}
-      <Footer />
-    </div>
-  );
-};
 
-const mapStateToProps = (state) => ({
-  loading: state.auth.loading,
-  error: state.auth.error,
-  message: state.auth.message,
-});
 
-const mapDispatchToProps = (dispatch) => ({
-  onAuth: (firstName, lastName, email, password) =>
-    dispatch(auth(firstName, lastName, email, password)),
-});
+      </div>
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+
+
+    )
+  }
+}
+
+export default Location;
