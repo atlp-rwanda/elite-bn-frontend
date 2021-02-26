@@ -12,7 +12,7 @@ Make company global travel and accommodation easy and convenient for the strong 
 
 ## hosted version of the application
 
-If you want to have a look on the hosted version of the app click **[HERE](https://naughty-mirzakhani-b9436a.netlify.app/)**
+If you want to have a look on the hosted version of the app click **[HERE](https://barefoot-nomads.netlify.app/)**
 
 ## How to get access to the Docker Container/Image
 
@@ -59,3 +59,28 @@ To start the application in production mode run the command below
 
 > `npm start`
 
+# Contribute
+
+If you ever have an idea on how you might help improve the app, you are welcome to contribute your changes to the repository, Just follow the steps below:
+
+Assumming you have the repo cloned on your PC,
+
+- Pull the latest changes from the remote repo by running:
+
+```
+git pull origin develop
+```
+
+NB: You need to be on the develop branch when you do this
+
+- Create & switch to the new branch where you will add your changes by running:
+
+```
+git checkout -b `yournewbranchname`
+```
+
+- After adding your changes, commit and push them to create a pull request against the develop branch. We will review and merge them if they are helpful.
+
+# Authors
+
+team Elite &copy;2021.
