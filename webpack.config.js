@@ -1,12 +1,12 @@
-const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-const webpack = require('webpack');
-const Dotenv = require('dotenv-webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
@@ -61,6 +61,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
+    new NodePolyfillPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new NodePolyfillPlugin(),
@@ -72,6 +73,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     }),
   ],
 
@@ -87,4 +94,4 @@ module.exports = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-};
+}

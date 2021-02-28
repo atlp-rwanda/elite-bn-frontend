@@ -1,7 +1,6 @@
-import Toastify from 'toastify-js';
+import Toastify from 'toastify-js'
 
 const successToast = (fullName) => {
-
   Toastify({
     text: `welcome ${fullName}`,
     duration: 3000,
@@ -9,12 +8,10 @@ const successToast = (fullName) => {
     position: 'right',
     backgroundColor: 'green',
     color: 'white',
-  }).showToast();
-
+  }).showToast()
 }
 
 const errorToast = (errorMessage) => {
-
   Toastify({
     text: errorMessage,
     duration: 3000,
@@ -22,8 +19,6 @@ const errorToast = (errorMessage) => {
     position: 'right',
     backgroundColor: 'red',
     color: 'white',
-  }).showToast();
-
+  }).showToast()
 }
 export { successToast, errorToast }
-

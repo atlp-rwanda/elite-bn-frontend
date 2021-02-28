@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import './navCSS.css';
+import React, { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import './navCSS.css'
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false);
-  const toggle = () => setOpen(!open);
+  const [open, setOpen] = useState(false)
+  const toggle = () => setOpen(!open)
   return (
     <div className="md:flex justify-between items-center bg-gray-100  md:px-20  px-5 p-2 h-full md:p-5">
       <div className="flex justify-between items-center">
@@ -32,20 +32,25 @@ const NavBar = () => {
         }
       >
         <NavLink
-          className="block mt-2 md:mr-5 text-center text-sm bg-blue-600 md:hover:bg-purple-500 py-1 px-6 font-medium  rounded-sm"
+          className="register-btn block mt-2 md:mr-5 text-center text-sm bg-blue-600 md:hover:bg-purple-500 py-1 px-6 font-medium  rounded-sm"
           to="./register"
+          id="register-btn"
         >
           Register
         </NavLink>
         <NavLink
-          className="block mt-2 text-center md:mr-10 text-sm bg-blue-600 md:hover:bg-purple-500 py-1 px-6 font-medium rounded-sm"
+          className="l block mt-2 text-center md:mr-10 text-sm bg-blue-600 md:hover:bg-purple-500 py-1 px-6 font-medium rounded-sm"
           to="./login"
+          id="login-btn"
         >
           Login
         </NavLink>
         <div className="flex justify-end items-center text-gray-600">
           <i className="pt-1 fas fa-globe" />
-          <p className="text-gray-600 md:text-1xs text-xs md:pl-2 pt-0.5 pl-1 text-center">
+          <p
+            className="text-gray-600 md:text-1xs text-xs md:pl-2 pt-0.5 pl-1 text-center"
+            id="english"
+          >
             English
           </p>
           <button data-testid="drop-down" type="button">
@@ -54,7 +59,7 @@ const NavBar = () => {
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

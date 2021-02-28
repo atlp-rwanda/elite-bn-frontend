@@ -1,128 +1,66 @@
-import React from 'react';
-import { jest } from '@jest/globals';
-import { shallow, mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Adapter from 'enzyme-adapter-react-16';
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
-import { render, fireEvent, act } from '@testing-library/react';
-import rootReducer from '../store';
-import '@testing-library/jest-dom/extend-expect';
+import React from 'react'
+import { configure, shallow, mount } from 'enzyme'
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import store from '../store'
+import Login from '../components/Login'
 
-import Login from '../components/Login';
+configure({ adapter: new Adapter() })
 
-// Enzyme.configure({ adapter: new Adapter() });
-
-const mockStore = configureMockStore();
-const store1 = mockStore({});
-
-let mainState; let props; let testStore; let
-  setUp;
-beforeEach(() => {
-  const middlewares = [thunk];
-  mainState = {
-    email: '',
-    token: null,
-    error: null,
-    loading: false,
-    message: null,
-  };
-
-  props = {
-    email: '',
-    token: null,
-    error: null,
-    loading: false,
-    message: null,
-    ChangePassword: jest.fn(),
-  };
-
-  testStore = (state) => {
-    const createStoreWithMiddleware = () => { applyMiddleware(...middlewares)(createStore); };
-    return createStoreWithMiddleware(rootReducer, state);
-  };
-
-  const store = mockStore({});
-  const wrapper = shallow(
-    <Provider store={store}>
-      <Login />
-    </Provider>,
-  );
-});
-describe('ResetPassword page Components', () => {
-  xit(' contains input', () => {
-    jest.useFakeTimers();
-    act(() => {
-      render(
-        <Router>
-          <Provider store={store1}>
-            <Login />
-          </Provider>
-        </Router>,
-
-      );
-    });
-    act(() => {
-      jest.advanceTimersByTime(3000);
-    });
-    const { getByTestId } = render(
-      <Router>
-        <Provider store={store1}>
+describe('test case for login ', () => {
+  let wrapper
+  beforeEach(() => {
+    wrapper = mount(
+      <Provider store={store}>
+        <BrowserRouter>
+          {' '}
           <Login />
-        </Provider>
-      </Router>,
+        </BrowserRouter>
+      </Provider>,
+    )
+  })
 
-    );
-    const input = getByTestId('input');
+  it('email check', () => {
+    // wrapper =shallow(<Login />);
+    wrapper.find('#Email').simulate('change', {
+      target: { name: 'email', value: 'eric74@example.com' },
+    })
+  })
+  it('password check', () => {
+    // wrapper =shallow(<Login />);
+    ;<input
+      label="Password"
+      name="Password"
+      type="password"
+      placeholder="Enter your password"
+    />
+    wrapper.find('#Password').simulate('change', {
+      target: { name: 'password', value: 'samplepassword' },
+    })
+  })
+  it('login check with right data', () => {
+    // wrapper = shallow(<Login />);
+    wrapper.find('#Email').simulate('change', {
+      target: { name: 'email', value: 'eric74@example.com' },
+    })
 
-    expect(input.children.length).toBe(1);
+    wrapper.find('#Password').simulate('change', {
+      target: { name: 'password', value: 'samplepassword' },
+    })
+    wrapper.find('form').simulate('submit')
+  })
 
-    jest.useRealTimers();
+  it('login check with wrong data', () => {
+    //  wrapper=shallow(<Login />);
 
-    // expect(setTimeout).toHaveBeenCalledTimes(1);
-  });
-  xit('submit inputted element', () => {
-    jest.useFakeTimers();
-    act(() => {
-      render(
-        <Router>
-          <Provider store={store1}>
-            <Login />
-          </Provider>
-        </Router>,
+    wrapper.find('#Email').simulate('change', {
+      target: { name: 'email', value: 'eric@example.com' },
+    })
 
-      );
-    });
-    act(() => {
-      jest.advanceTimersByTime(3000);
-    });
-
-    const { getByPlaceholderText } = render(
-      <Router>
-        <Provider store={store1}>
-          <Login />
-        </Provider>
-      </Router>,
-
-    );
-    const Firstnode = getByPlaceholderText('Enter your email');
-
-    fireEvent.change(Firstnode, { target: { value: 'pextech@gmail.com' } });
-
-    const SecNode = getByPlaceholderText('Enter your password');
-
-    fireEvent.change(SecNode, { target: { value: 'Mc1639_1639' } });
-
-    const { getByText } = render(
-      <Router>
-        <Provider store={store1}>
-          <Login />
-        </Provider>
-      </Router>,
-    );
-    const node2 = getByText('Login');
-    fireEvent.click(node2);
-  });
-});
+    wrapper.find('#Email').simulate('change', {
+      target: { name: 'password', value: 'samplepassword123' },
+    })
+    wrapper.find('form').simulate('submit')
+  })
+})
