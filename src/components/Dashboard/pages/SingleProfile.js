@@ -22,7 +22,7 @@ export const SingleProfile = ({
       <NavBar userData={userData} LogoutAction={LogoutAction} Logout={Logout} />
       <SideBar />
       <Profile userData={userData} />
-      <Footer />
+      <Footer LogoutAction={LogoutAction} />
     </div>
   )
 }

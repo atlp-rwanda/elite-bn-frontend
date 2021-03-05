@@ -30,7 +30,7 @@ export const DashBoard = ({
           />
           <Content />
           <SideBar />
-          <Footer />
+          <Footer LogoutAction={LogoutAction} />
         </div>
       ) : (
         <Redirect to="/login" />

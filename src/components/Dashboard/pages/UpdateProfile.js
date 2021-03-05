@@ -23,7 +23,7 @@ export const UpdateProfile = ({
       <NavBar userData={userData} LogoutAction={LogoutAction} Logout={Logout} />
       <SideBar />
       <UpdateForm userData={userData} />
-      <Footer />
+      <Footer LogoutAction={LogoutAction} />
     </div>
   )
 }
