@@ -35,6 +35,17 @@ module.exports = {
       borderRadius: {
         f: '100%',
       },
+      inset: (theme, { negative }) => ({
+        auto: 'auto',
+        ...theme('spacing'),
+        ...negative(theme('spacing')),
+        '2/4': '44%',
+        '1/4': '27%',
+        '3/4': '30%',
+      }),
+      left: {
+        7: '45%',
+      },
     },
     backgroundColor: (theme) => ({
       ...theme('colors'),
@@ -47,4 +58,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+}
