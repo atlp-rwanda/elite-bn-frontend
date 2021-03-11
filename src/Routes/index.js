@@ -9,6 +9,10 @@ import Auth from '../containers/Auth/Auth'
 import login from '../components/Login'
 import ResetPassword from '../components/ResetPassword/ResetPassword'
 
+import AllAccomodation from '../components/Dashboard/Accomodation/AllAccomodation';
+import ManageAccomodation from '../components/Dashboard/Accomodation/ManageAccomodation';
+import Location from '../components/Dashboard/Location/Location';
+
 function index() {
   return (
     <Switch>
@@ -24,7 +28,12 @@ function index() {
         path="/dashboard/profile/update/"
         component={UpdateProfile}
       />
+
       <Route exact path="/reset-password" component={ResetPassword} />
+      <Route exact path="/dashboard/Accomodation/AllAccomodation/" component={AllAccomodation} />
+      <Route exact path="/dashboard/Accomodation/ManageAccomodation/" component={ManageAccomodation} />
+      <Route exact path="/dashboard/Accomodation/Location/" component={Location} />
+
     </Switch>
   )
 }

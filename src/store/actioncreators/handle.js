@@ -5,7 +5,7 @@ import { LOGIN_SUCCESS } from '../actions/ActionTypes'
 
 const handle = async (state, history, dispatch) => {
   axios
-    .post('https://elite-staging.herokuapp.com/api/v1/users/signin', state)
+    .post('http://localhost:5000/api/v1/users/signin', state)
     .then((response) => {
       const { token } = response.data.data
       const { data } = response.data

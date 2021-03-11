@@ -34,7 +34,7 @@ const fetchUserInfo = () => {
     const { id } = user
     dispatch(getUserProfile(id))
     axios
-      .get(`https://elite-staging.herokuapp.com/api/v1/users/profile/${id}`)
+      .get(`http://localhost:5000/api/v1/users/profile/${id}`)
       .then((res) => {
         const userData = res.data.data
         dispatch(getUserProfileData(userData))
