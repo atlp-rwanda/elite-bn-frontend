@@ -13,7 +13,7 @@ const handle = async (state, history, dispatch) => {
       setAuthorizationToken(token)
       localStorage.setItem('userInfo', JSON.stringify(data))
       const { fullName } = response.data.data.userInfo
-      successToast(fullName)
+      successToast(`Welcome ${fullName}`)
       dispatch({ type: LOGIN_SUCCESS, payload: response.data.data })
       history.push('/dashboard/')
     })

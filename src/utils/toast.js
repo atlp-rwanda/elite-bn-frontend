@@ -1,8 +1,8 @@
 import Toastify from 'toastify-js'
 
-const successToast = (fullName) => {
+const successToast = (text) => {
   Toastify({
-    text: `welcome ${fullName}`,
+    text,
     duration: 3000,
     close: true,
     position: 'right',
@@ -11,9 +11,9 @@ const successToast = (fullName) => {
   }).showToast()
 }
 
-const errorToast = (errorMessage) => {
+const errorToast = (text) => {
   Toastify({
-    text: errorMessage,
+    text,
     duration: 3000,
     close: true,
     position: 'right',
