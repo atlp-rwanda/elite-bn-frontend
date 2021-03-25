@@ -61,3 +61,4 @@ User.prototype = {
 };
 
 export default User;
+ 
