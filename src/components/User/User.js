@@ -1,11 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import ProtoTypes from 'prop-types';
-<<<<<<< HEAD
-=======
 import { ToastContainer } from 'react-toastify';
-
->>>>>>> 1ddcb04 (feat(usersToManagers): assign users to managers)
 
 const User = ({ data, changed }) => {
   const [select, setSelect] = useState(false);
@@ -48,10 +44,7 @@ const User = ({ data, changed }) => {
           <option value="4">Line 4</option>
         </select>
       </td>
-<<<<<<< HEAD
-=======
       <ToastContainer />
->>>>>>> 1ddcb04 (feat(usersToManagers): assign users to managers)
     </tr>
   );
 };
@@ -61,4 +54,3 @@ User.prototype = {
 };
 
 export default User;
- 

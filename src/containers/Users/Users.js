@@ -31,10 +31,12 @@ const Users = (props) => {
       <table className="table-auto md:table-fixed w-full text-left border-collapse">
         <thead className="border-b-2">
           <tr>
-            <th className="w-1/3 z-20 sticky top-0 text-sm font-semibold">Fist Name</th>
-            <th className="w-1/3 z-20 sticky top-0 text-sm font-semibold">E-mail</th>
-            <th className="w-1/5 z-20 sticky top-0 text-sm font-semibold">Line Manager</th>
-            <th className="w-1/5 z-20 sticky top-0 text-sm font-semibold">Action</th>
+            <th className="w-1/3 py-2 px-3 z-20 sticky top-0 text-sm font-semibold">Fist Name</th>
+            <th className="w-1/3 py-2 px-3 z-20 sticky top-0 text-sm font-semibold">E-mail</th>
+            <th className="w-1/5 py-2 px-3 z-20 sticky top-0 text-sm font-semibold">
+              Line Manager
+            </th>
+            <th className="w-1/5 py-2 px-3 z-20 sticky top-0 text-sm font-semibold">Action</th>
           </tr>
         </thead>
         <tbody className="align-baseline">{users}</tbody>

@@ -1,9 +1,6 @@
 import axios from 'axios';
-<<<<<<< HEAD
-=======
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
->>>>>>> 1ddcb04 (feat(usersToManagers): assign users to managers)
 import {
   FETCH_USERS_START,
   FETCH_USERS_SUCCESS,
@@ -44,11 +41,7 @@ export const assignUsersToManagersSuccess = (assigned) => ({
 export const assignUsersToManagers = (lineManagerId, id) => (dispatch) => {
   dispatch(assignUsersToManagersStart());
   const token = localStorage.getItem('jwtToken');
-<<<<<<< HEAD
-  const url = 'http://localhost:5000/api/v1/users/assign/manager';
-=======
   const url = 'https://elite-staging.herokuapp.com/api/v1/users/assign/manager';
->>>>>>> 1ddcb04 (feat(usersToManagers): assign users to managers)
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -64,28 +57,18 @@ export const assignUsersToManagers = (lineManagerId, id) => (dispatch) => {
     .then((res) => {
       const time = new Date().getTime();
       dispatch(assignUsersToManagersSuccess({ time }));
-<<<<<<< HEAD
-    })
-    .catch((err) => {
-      dispatch(assignUsersToManagersFail(err));
-=======
       toast.success('User assigned succesfully');
     })
     .catch((err) => {
       dispatch(assignUsersToManagersFail(err));
       toast.error('User assign failed');
->>>>>>> 1ddcb04 (feat(usersToManagers): assign users to managers)
     });
 };
 
 export const fetchUsers = () => (dispatch) => {
   dispatch(fetchUsersStart());
   const token = localStorage.getItem('jwtToken');
-<<<<<<< HEAD
-  const url = 'http://localhost:5000/api/v1/users/getUser';
-=======
   const url = 'https://elite-staging.herokuapp.com/api/v1/users/getUser';
->>>>>>> 1ddcb04 (feat(usersToManagers): assign users to managers)
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

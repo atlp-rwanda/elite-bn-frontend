@@ -29,6 +29,7 @@ module.exports = {
       },
       width: {
         s: '165vh',
+        '10/12': '80%',
       },
       paddingTop: {
         n: '-5em',
