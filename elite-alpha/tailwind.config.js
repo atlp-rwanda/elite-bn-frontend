@@ -1,0 +1,16 @@
+module.exports = {
+    purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {
+        backgroundImage: (theme) => ({
+            test1: "url('/src/assets/images/test1.jpg')",
+          })
+      },
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [],
+  }
+  
