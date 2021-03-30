@@ -1,39 +1,34 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { createRole, permissions, roles } from '../../../store/actions'
 import { logoutActionCreator } from '../../../store/actions/LogoutAction'
 import { fetchUserInfo } from '../../../store/actions/profileAction'
-import NavBar from '../NavBar'
 import Footer from '../Footer'
+import NavBar from '../NavBar'
+import RolesAndPerm from '../RolesAndPerm'
 import SideBar from '../Sidebar'
-import Content from './Content'
 
-export const DashBoard = ({
-  Logout,
-  LogoutAction,
+
+ const RolesAndPerms = ({
   userData,
   GetUserProfile,
+  LogoutAction,
+  Logout,
 }) => {
   useEffect(() => {
     GetUserProfile()
   }, [])
+
   return (
-    <>
-        <div className="bg-white grid grid-cols-12  grid-rows-mdScreen md:grid-rows-layout">
-          <NavBar
-            userData={userData}
-            LogoutAction={LogoutAction}
-            Logout={Logout}
-          />
-          <Content />
-          <SideBar />
-          <Footer />
-        </div>
-    </>
+    <div className="bg-gray-100 grid grid-cols-12  grid-rows-mdScreen md:grid-rows-layout  ">
+      <NavBar userData={userData} LogoutAction={LogoutAction} Logout={Logout} />
+      <SideBar />
+      <RolesAndPerm />
+      <Footer />
+    </div>
   )
 }
-
 export const mapStateToProps = (state) => ({
   Logout: state.user,
   userData: state.userProfile.userData,
@@ -44,4 +39,4 @@ export const mapDispatchToProps = (dispatch) => ({
   LogoutAction: () => dispatch(logoutActionCreator()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)
+export default connect(mapStateToProps, mapDispatchToProps)(RolesAndPerms)

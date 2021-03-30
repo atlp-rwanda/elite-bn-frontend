@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   AiFillCaretDown,
   AiOutlineCaretRight,
@@ -11,7 +11,14 @@ import { Link } from 'react-router-dom'
 
 const SideBar = () => {
   const [down1, setDown1] = useState(false)
+  const [roleId, setRoleId] = useState();
   const [sideBar, setSideBar] = useState(false)
+  const [roles, setRoles] = useState(false)
+  const user = JSON.parse(localStorage.getItem('userInfo'))
+  useEffect(()=>{
+    setRoleId(user.userInfo.roleId)
+  },[user.userInfo.roleId])
+ 
 
   return (
     <>
@@ -88,6 +95,52 @@ const SideBar = () => {
               </li>
             </ul>
           </article>
+          {roleId == 1 ?   <article className="flex  w-full items-center flex-col ">
+            <div
+              className={`flex ${
+                roles ? 'bg-blue-900' : 'bg-blue-700'
+              }    w-full py-2 justify-around md:justify-between px-4 border-b border-blue-800 `}
+            >
+              <h1 className="flex">
+                <FaUserShield className="mt-1 mr-1" />
+                <span className={`${sideBar ? 'block' : 'hidden'}  lg:block`}>
+                  Roles/permissions
+                </span>
+              </h1>
+              <AiFillCaretDown
+                className={`${
+                  roles ? 'block' : 'hidden'
+                } up cursor-pointer mt-1.5 text-sm`}
+                onClick={() => setRoles(!roles)}
+              />
+              <AiOutlineCaretRight
+                className={`${
+                  roles ? 'hidden' : 'block'
+                } dw cursor-pointer mt-1.5 text-sm`}
+                onClick={() => setRoles(!roles)}
+              />
+            </div>
+            <ul
+              className={`  ${
+                roles ? 'flex bg-blue-900' : 'hidden bg-blue-700'
+              }  py-3  items-center w-full flex-col `}
+            >
+            
+              <li className="flex transition duration-500 ease-in-out  ml-8 py-1  transform hover:translate-x-3 hover:scale-110  w-full ">
+                <RiUserSearchFill className="ml-1 mt-0.5" />
+                <Link to="/roles-permissions/">
+                  <span
+                    className={`${
+                      sideBar ? 'block' : 'hidden'
+                    }  text-sm ml-2 md:block`}
+                  >
+                    Roles
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </article>
+        : null}
         </section>
       </div>
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}

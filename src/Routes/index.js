@@ -6,25 +6,31 @@ import SingleProfile from '../components/Dashboard/pages/SingleProfile'
 import UpdateProfile from '../components/Dashboard/pages/UpdateProfile'
 import Home from '../components/Home'
 import Auth from '../containers/Auth/Auth'
-import login from '../components/Login'
+import Login from '../components/Login'
 import ResetPassword from '../components/ResetPassword/ResetPassword'
+import RolesAndPermissions from '../components/Dashboard/pages/RolesAndPermissions'
+import AdminRoute from './adminRoute'
+import AuthRoutes from './AuthRoutes'
+import IsloggedIn from './Islogged'
 
 function index() {
   return (
     <Switch>
-      <Route path="/register" component={Auth} />
+      <AuthRoutes path="/register" component={Auth} />
       <Route exact path="/" component={Home} />
-      <Route exact path="/dashboard/profile/" component={SingleProfile} />
-      <Route exact path="/login" component={login} />
+      <IsloggedIn exact path="/dashboard/profile/" component={SingleProfile} />
+      <AuthRoutes exact path="/login" component={Login} />
 
-      <Route exact path="/dashboard" component={DashBoard} />
+      <IsloggedIn exact path="/dashboard" component={DashBoard} />
       <Route exact path="/reset-password" component={ResetPassword} />
-      <Route
+      <IsloggedIn
         exact
         path="/dashboard/profile/update/"
         component={UpdateProfile}
       />
       <Route exact path="/reset-password" component={ResetPassword} />
+      <IsloggedIn exact path="/roles-permissions" component={RolesAndPermissions}></IsloggedIn>
+      <AdminRoute exact path="/roles-permissions" component={RolesAndPermissions} />
     </Switch>
   )
 }
