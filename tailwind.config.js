@@ -39,6 +39,7 @@ module.exports = {
         auto: 'auto',
         ...theme('spacing'),
         ...negative(theme('spacing')),
+        '1/2': '15%',
         '2/4': '44%',
         '1/4': '27%',
         '3/4': '30%',

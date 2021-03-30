@@ -5,7 +5,6 @@ import { IoLocationSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton'
 import Pagination from './Pagination'
-
 const Profile = ({ userData }) => {
   const [loading, setLoading] = useState(true)
   const {
@@ -35,7 +34,7 @@ const Profile = ({ userData }) => {
               <img
                 className={`${
                   loading ? 'hidden' : 'block'
-                } rounded-full h-32 w-32 absolute  inset-x-1/4 md:inset-x-2/4 -bottom-16  border-white  border-8 `}
+                } rounded-full h-24 md:h-32 w-24 md:w-32 absolute  inset-x-1/4 md:inset-x-2/4 -bottom-16  border-white  border-8 `}
                 src={
                   profilePicture ||
                   'https://res.cloudinary.com/nrob/image/upload/v1613451239/npc5d5r9g0nyyihppqxd.png'
@@ -55,7 +54,7 @@ const Profile = ({ userData }) => {
               <div
                 className={`${
                   loading ? 'block' : 'hidden'
-                } absolute mt-2 inset-x-1/4  md:inset-x-2/4 -bottom-10 sm:-bottom-16`}
+                } absolute mt-2 inset-x-1/2 sm:inset-x-1/4 md:inset-x-2/4 -bottom-10 sm:-bottom-16`}
               >
                 <Skeleton circle width={100} height={100} />
               </div>
@@ -87,7 +86,7 @@ const Profile = ({ userData }) => {
               loading ? 'hidden' : 'grid'
             } grid-cols-1  md:grid-cols-2 lg:grid-cols-3 my-7 justify-between px-4 md:px-0 w-full items-center`}
           >
-            <div className="info mt-1 md:mt-7  pr-0  md:p-0  items-center flex flex-col">
+            <div className="info ml-7 ms:ml-14 mb-2  md:mt-7  pr-0  md:p-0  items-center flex flex-col">
               <div>
                 <h3 className=" flex">
                   <MdEmail className="mt-1  text-blue-600" />
@@ -112,7 +111,7 @@ const Profile = ({ userData }) => {
                 </span>
               </div>
             </div>
-            <div className="info mt-4 mr-12  md:mr-14 pl-1 items-center flex flex-col">
+            <div className="info mt-4 mr-16  md:mr-14 pl-1 items-center flex flex-col">
               <div>
                 <h2 className="flex text-gray-700">
                   <IoLocationSharp className="mt-1 text-blue-600" />
