@@ -75,7 +75,7 @@ describe('test content', () => {
   test('Test content of Content', () => {
     expect(
       wrapper.contains(
-        <div className="col-start-3    row-start-2  col-end-13 p-4 md:p-12" />,
+        <div className="col-start-3  min-h-screen  row-start-2  col-end-13 p-4 md:p-12" />,
       ),
     ).toEqual(true)
   })
