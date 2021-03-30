@@ -40,3 +40,5 @@ export const auth = (firstName, lastName, email, password) => (dispatch) => {
       dispatch(authFail(message));
     });
 };
+
+export const token = localStorage.getItem('jwtToken');
