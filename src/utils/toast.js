@@ -1,8 +1,8 @@
 import Toastify from 'toastify-js'
 
-const successToast = (fullName) => {
+const successToast = (fullName, message) => {
   Toastify({
-    text: `welcome ${fullName}`,
+    text: message || `welcome ${fullName}`,
     duration: 3000,
     close: true,
     position: 'right',
