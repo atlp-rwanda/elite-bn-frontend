@@ -40,7 +40,6 @@ const UpdateForm = ({ userData }) => {
 
   const history = useHistory()
   const onSubmit = (values) => {
-    console.log(values)
     const data = new FormData()
     data.append('profilePicture', values.profilePicture)
     data.append('firstName', values.firstName)
