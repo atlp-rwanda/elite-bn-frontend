@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export default function setAthorizationToken(token) {
   if (token) {
-    axios.defaults.headers.Authorization = `${token}`;
+    axios.defaults.headers.Authorization = `${token}`
   } else {
-    delete axios.defaults.headers.authorization;
+    delete axios.defaults.headers.Authorization
   }
 }

@@ -7,6 +7,7 @@ import changeReducer from './reducers/change'
 import userProfileReducer from './reducers/ProfileReducer'
 import authReducer from './reducers/auth'
 import setAuthorization from '../utils/setAuthorization'
+import usersToManagersReducer from './reducers/usersToManagers'
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -14,8 +15,8 @@ const rootReducer = combineReducers({
   reset: resetReducer,
   change: changeReducer,
   userProfile: userProfileReducer,
+  usersToManagers: usersToManagersReducer,
 })
-
 const logger = () => (next) => (action) => {
   const result = next(action)
   return result
