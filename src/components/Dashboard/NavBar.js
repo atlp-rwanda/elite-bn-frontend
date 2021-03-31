@@ -11,6 +11,7 @@ import { FiGlobe } from 'react-icons/fi'
 import { IoLogOutOutline } from 'react-icons/io5'
 import { toast, ToastContainer } from 'react-toastify'
 import Skeleton from 'react-loading-skeleton'
+import {BsBell} from "react-icons/bs"
 
 const NavBar = ({ userData, LogoutAction }) => {
   const history = useHistory()
@@ -43,6 +44,10 @@ const NavBar = ({ userData, LogoutAction }) => {
           </div>
 
           <div className="flex flex-row">
+            <div>
+              <span className="text-2xl" > <BsBell /></span>
+              <span></span>
+            </div>
             <div className="flex flex-row w-2/4 ">
               <div className="profile flex-row flex mr-2 md:mr-7">
                 <div className="flex-row flex relative">
