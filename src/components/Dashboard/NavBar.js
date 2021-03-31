@@ -1,9 +1,6 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
+/* eslint-disable */
+
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FaUserEdit } from 'react-icons/fa'
 import { AiOutlineDown } from 'react-icons/ai'
@@ -11,12 +8,16 @@ import { FiGlobe } from 'react-icons/fi'
 import { IoLogOutOutline } from 'react-icons/io5'
 import { toast, ToastContainer } from 'react-toastify'
 import Skeleton from 'react-loading-skeleton'
+import { BsBell } from 'react-icons/bs'
+import { BiEnvelope } from 'react-icons/bi'
+import { GrUserSettings } from 'react-icons/gr'
 
-const NavBar = ({ userData, LogoutAction }) => {
+const NavBar = ({ userData, LogoutAction, notifications }) => {
   const history = useHistory()
   const [dropDown, setDropDown] = useState(false)
   const [loading, setLoading] = useState(true)
-
+  const [loader, setLoader] = useState(true)
+  const [notification, setNotification] = useState(false)
   const { firstName, profilePicture } = userData
   const logout = () => {
     toast.success('User logout successfully')
@@ -30,8 +31,15 @@ const NavBar = ({ userData, LogoutAction }) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 2000)
+      setLoader(false)
+    }, 5000)
   }, [])
+  const notificationLoader = () => {
+    setLoader(true)
+    setTimeout(() => {
+      setLoader(false)
+    }, 3000)
+  }
   return (
     <div className="col-span-full  w-full  col-start-3  col-end-14 shadow-xl  ">
       <header className="flex justify-between h-16 align-center items-center font-mainFont relative   ">
@@ -42,9 +50,67 @@ const NavBar = ({ userData, LogoutAction }) => {
             </Link>
           </div>
 
-          <div className="flex flex-row">
+          <div className="flex flex-row ">
             <div className="flex flex-row w-2/4 ">
               <div className="profile flex-row flex mr-2 md:mr-7">
+                <div className="mr-4 relative">
+                  <span className="absolute z-0 animate-pulse text-xs bg-blue-600 text-white rounded-full px-1 -top-2.5  -right-3">
+                    {notifications.length}
+                  </span>
+
+                  <span
+                    className="text-2xl z-20 cursor-pointer"
+                    onClick={notificationLoader}
+                  >
+                    {' '}
+                    <BsBell onClick={() => setNotification(!notification)} />
+                  </span>
+
+                  <div
+                    className={`${
+                      notification ? 'block' : 'hidden'
+                    } bg-white border z-20 rounded-md   w-72 md:w-80 flex flex-col -left-16 md:-left-72 right-4 md:right-0 absolute top-10 shadow-md`}
+                  >
+                    <div className="w-full">
+                      <span className="text-blue-600 font-bold  py-2 pt-4 px-2 ">
+                        Notification
+                      </span>
+                    </div>
+                    <div className="Single border-t my-2 max-h-60   overflow-y-auto py-2 grid gap-4 grid-cols-3 justify-items-center items-center justify-between px-2">
+                      {notifications.map((notice) => {
+                        return (
+                          <>
+                            <div className={`${loader ? 'hidden' : 'block'}`}>
+                              <BiEnvelope className="text-center text-3xl " />
+                            </div>
+                            <div
+                              className={`${
+                                loader ? 'block' : 'hidden'
+                              } w-full text-center col-span-1`}
+                            >
+                              <Skeleton height={40} circle width={40} />
+                            </div>
+                            <div
+                              className={`${
+                                loader ? 'hidden' : ' block'
+                              } col-span-2  text-xs`}
+                            >
+                              {notice.message}
+                            </div>
+                            <div
+                              className={`${
+                                loader ? 'block' : 'hidden'
+                              } w-full col-span-2`}
+                            >
+                              <Skeleton height={15} />
+                              <Skeleton height={15} />
+                            </div>
+                          </>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
                 <div className="flex-row flex relative">
                   <img
                     className={`${
@@ -129,7 +195,11 @@ const NavBar = ({ userData, LogoutAction }) => {
                           />
                         </span>
                       </span>
-                      <span className={`${loading ? 'hidden' : 'block'} eng`}>
+                      <span
+                        className={`${
+                          loading ? 'hidden' : 'block'
+                        } text-xs mt-1 md:mt-0  md:text-lg`}
+                      >
                         English
                       </span>
                       <span
