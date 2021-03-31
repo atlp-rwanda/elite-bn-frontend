@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 import userReducer from './reducers/user'
 import resetReducer from './reducers/reset'
 import changeReducer from './reducers/change'
+import rateAndReview from './reducers/rateAndReview'
 import userProfileReducer from './reducers/ProfileReducer'
 import authReducer from './reducers/auth'
 import setAuthorization from '../utils/setAuthorization'
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   reset: resetReducer,
   change: changeReducer,
   userProfile: userProfileReducer,
+  reviews: rateAndReview,
 })
 
 const logger = () => (next) => (action) => {
