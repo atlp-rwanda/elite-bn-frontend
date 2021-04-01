@@ -1,33 +1,33 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
-import Button from '../../components/UI/Button/Button';
-import classes from './Auth.module.css';
-import 'react-toastify/dist/ReactToastify.css';
-import accomodationImage from '../../assets/images/accomodationImage.png';
-import { auth } from '../../store/actions/index';
-import Header from '../../components/Header/NavBar';
-import Footer from '../../components/Footer/Footer';
-import SocialSignin from '../../components/UI/socialSignin/socialSignin';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import SignupSkeleton from '../../skeletons/Signup/SignupSkeleton';
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { ToastContainer, toast } from 'react-toastify'
+import { useForm } from 'react-hook-form'
+import Button from '../../components/UI/Button/Button'
+import classes from './Auth.module.css'
+import 'react-toastify/dist/ReactToastify.css'
+import accomodationImage from '../../assets/images/accomodationImage.png'
+import { auth } from '../../store/actions/index'
+import Header from '../../components/Header/NavBar'
+import Footer from '../../components/Footer/Footer'
+import SocialSignin from '../../components/UI/socialSignin/socialSignin'
+import Spinner from '../../components/UI/Spinner/Spinner'
+import SignupSkeleton from '../../skeletons/Signup/SignupSkeleton'
 
 const Auth = (props) => {
-  let registerButton = <Button btnType="Success">Register</Button>;
+  let registerButton = <Button btnType="Success">Register</Button>
 
-  const [skeleton, setSkeleton] = useState(false);
+  const [skeleton, setSkeleton] = useState(false)
 
   useEffect(() => {
-    setSkeleton(true);
+    setSkeleton(true)
     const timer = setTimeout(() => {
-      setSkeleton(false);
-    }, 2000);
+      setSkeleton(false)
+    }, 2000)
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timer)
+  }, [])
 
   if (props.loading) {
     registerButton = (
@@ -35,33 +35,34 @@ const Auth = (props) => {
         <Spinner />
         Register
       </Button>
-    );
+    )
   }
-  const {
-    register, handleSubmit, errors, reset,
-  } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm()
 
   const onSubmit = async (data) => {
-    await props.onAuth(data.firstName, data.lastName, data.email, data.password);
-    reset();
-  };
+    await props.onAuth(data.firstName, data.lastName, data.email, data.password)
+    reset()
+  }
 
-  const { error, message } = props;
+  const { error, message } = props
 
   useEffect(() => {
     if (message) {
-      toast.success('Account created successfully, Check your email to verify the account.', {
-        delay: 10000,
-      });
+      toast.success(
+        'Account created successfully, Check your email to verify the account.',
+        {
+          delay: 10000,
+        },
+      )
       props.history.push({
         pathname: '/login',
-      });
+      })
     } else if (error && error.includes('Network')) {
-      toast.warning('Sorry, We are in troubleshoting the system');
+      toast.warning('Sorry, We are in troubleshoting the system')
     } else if (error) {
-      toast.error(props.error);
+      toast.error(props.error)
     }
-  }, [props.message, props.error]);
+  }, [props.message, props.error])
 
   return (
     <div className="bg-gray-100 w-full m-0">
@@ -70,8 +71,12 @@ const Auth = (props) => {
       {!skeleton && (
         <div className="grid grid-cols-1 md:grid-cols-3 card hover:shadow-lg w-3/4 mx-auto">
           <div className="md:w-4/6 md:col-span-2 py-4 mx-auto">
-            <h1 className="text-gray-600 font-medium text-lg mx-4">Get started for free</h1>
-            <p className="text-blue-500 mx-4">Over 1000 campanies trust Barefoot-nomad worldwide</p>
+            <h1 className="text-gray-600 font-medium text-lg mx-4">
+              Get started for free
+            </h1>
+            <p className="text-blue-500 mx-4">
+              Over 1000 campanies trust Barefoot-nomad worldwide
+            </p>
             <div className={classes.Auth}>
               <ToastContainer />
               <form
@@ -88,7 +93,9 @@ const Auth = (props) => {
                   ref={register({ required: true })}
                 />
                 <p className="col-span-2 md:col-span-1 text-red-500 text-center">
-                  {errors.firstName && <span role="alert">No first name provided</span>}
+                  {errors.firstName && (
+                    <span role="alert">No first name provided</span>
+                  )}
                 </p>
                 <input
                   name="lastName"
@@ -98,7 +105,9 @@ const Auth = (props) => {
                   ref={register({ required: true })}
                 />
                 <p className="col-span-2 md:col-span-1 text-red-500 text-center">
-                  {errors.lastName && <span role="alert">No last name provided</span>}
+                  {errors.lastName && (
+                    <span role="alert">No last name provided</span>
+                  )}
                 </p>
 
                 <input
@@ -108,7 +117,10 @@ const Auth = (props) => {
                   type="email"
                   placeholder="E-mail"
                   className="col-span-2  border-primary-100 rounded p-4 my-4  shadow-md h-10 text-primary-100"
-                  ref={register({ required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })}
+                  ref={register({
+                    required: true,
+                    pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                  })}
                 />
                 <p className="col-span-2 text-red-500 text-center">
                   {errors.email && errors.email.type === 'required' && (
@@ -137,7 +149,9 @@ const Auth = (props) => {
 
                 <p className="w-full col-span-2 text-red-500 text-center">
                   {errors.password && errors.password.type === 'minLength' && (
-                    <span role="alert">Password should be at-least 8 characters.</span>
+                    <span role="alert">
+                      Password should be at-least 8 characters.
+                    </span>
                   )}
                 </p>
 
@@ -148,8 +162,7 @@ const Auth = (props) => {
               <SocialSignin />
 
               <p>
-                Already have an account?
-                {' '}
+                Already have an account?{' '}
                 <a className="text-blue-500 text-sm font-medium" href="/login">
                   Sign in
                 </a>
@@ -167,18 +180,19 @@ const Auth = (props) => {
       )}
       <Footer />
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => ({
   loading: state.auth.loading,
   error: state.auth.error,
   message: state.auth.message,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   // eslint-disable-next-line max-len
-  onAuth: (firstName, lastName, email, password) => dispatch(auth(firstName, lastName, email, password)),
-});
+  onAuth: (firstName, lastName, email, password) =>
+    dispatch(auth(firstName, lastName, email, password)),
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)
