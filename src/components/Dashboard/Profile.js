@@ -23,18 +23,17 @@ const Profile = ({ userData }) => {
   return (
     <>
       <div className="col-start-3    row-start-2  col-end-13 p-4 md:p-12">
+
         <div className="card bg-white w-full  items-center flex flex-col">
           <div className="imgs flex flex-col w-full items-center mb-4  ">
             <div
-              className={`${
-                loading ? 'hidden' : 'block'
-              } w-full bg-blue-600    relative  h-72 md:h-100`}
+              className={`${loading ? 'hidden' : 'block'
+                } w-full bg-blue-600    relative  h-72 md:h-100`}
               alt="background"
             >
               <img
-                className={`${
-                  loading ? 'hidden' : 'block'
-                } rounded-full h-24 md:h-32 w-24 md:w-32 absolute  inset-x-1/4 md:inset-x-2/4 -bottom-16  border-white  border-8 `}
+                className={`${loading ? 'hidden' : 'block'
+                  } rounded-full h-24 md:h-32 w-24 md:w-32 absolute  inset-x-1/4 md:inset-x-2/4 -bottom-16  border-white  border-8 `}
                 src={
                   profilePicture ||
                   'https://res.cloudinary.com/nrob/image/upload/v1613451239/npc5d5r9g0nyyihppqxd.png'
@@ -43,18 +42,16 @@ const Profile = ({ userData }) => {
               />
             </div>
             <div
-              className={`${
-                loading ? 'block' : 'hidden '
-              } w-full  relative  h-100`}
+              className={`${loading ? 'block' : 'hidden '
+                } w-full  relative  h-100`}
               alt="background"
             >
               <div className={` ${loading ? 'block' : 'hidden'} w-full `}>
                 <Skeleton height={350} />
               </div>
               <div
-                className={`${
-                  loading ? 'block' : 'hidden'
-                } absolute mt-2 inset-x-1/2 sm:inset-x-1/4 md:inset-x-2/4 -bottom-10 sm:-bottom-16`}
+                className={`${loading ? 'block' : 'hidden'
+                  } absolute mt-2 inset-x-1/2 sm:inset-x-1/4 md:inset-x-2/4 -bottom-10 sm:-bottom-16`}
               >
                 <Skeleton circle width={100} height={100} />
               </div>
@@ -62,9 +59,8 @@ const Profile = ({ userData }) => {
           </div>
           <div className="info items-center mr-4 md:mr-0  mt-12 md:mt-12 flex  flex-col">
             <h2
-              className={`${
-                loading ? ' hidden' : 'block'
-              } text-2xl   flex justify-between text-gray-700`}
+              className={`${loading ? ' hidden' : 'block'
+                } text-2xl   flex justify-between text-gray-700`}
             >
               <span id="firstName"> {firstName}</span> <br />
               <span className="pl-2" id="lastName">
@@ -82,9 +78,8 @@ const Profile = ({ userData }) => {
             </div>
           </div>
           <div
-            className={`${
-              loading ? 'hidden' : 'grid'
-            } grid-cols-1  md:grid-cols-2 lg:grid-cols-3 my-7 justify-between px-4 md:px-0 w-full items-center`}
+            className={`${loading ? 'hidden' : 'grid'
+              } grid-cols-1  md:grid-cols-2 lg:grid-cols-3 my-7 justify-between px-4 md:px-0 w-full items-center`}
           >
             <div className="info ml-7 ms:ml-14 mb-2  md:mt-7  pr-0  md:p-0  items-center flex flex-col">
               <div>
@@ -124,9 +119,8 @@ const Profile = ({ userData }) => {
             </div>
           </div>
           <div
-            className={`${
-              loading ? 'grid' : 'hidden'
-            }  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-7 justify-between  w-full items-center `}
+            className={`${loading ? 'grid' : 'hidden'
+              }  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-7 justify-between  w-full items-center `}
           >
             <div className="info mt-1 md:mt-4   items-center flex flex-col">
               <div className="flex-col flex">
@@ -148,17 +142,15 @@ const Profile = ({ userData }) => {
             </div>
           </div>
           <div
-            className={`${
-              loading ? 'hidden' : 'block'
-            } border-gray-500 border-t py-4 w-10/12 flex-col flex items-center `}
+            className={`${loading ? 'hidden' : 'block'
+              } border-gray-500 border-t py-4 w-10/12 flex-col flex items-center `}
           >
             <Link to="/dashboard/profile/update/">
               <button
                 id="button"
                 type="submit"
-                className={`${
-                  loading ? 'hidden' : 'block'
-                } outline-none mt-8 border-none
+                className={`${loading ? 'hidden' : 'block'
+                  } outline-none mt-8 border-none
                focus:border-none  bg-blue-600 hover:bg-indigo-600 text-white px-8 py-1 rounded-sm`}
               >
                 Update
@@ -166,9 +158,8 @@ const Profile = ({ userData }) => {
             </Link>
           </div>
           <div
-            className={`${
-              loading ? 'block' : 'hidden'
-            } py-2 mb-6 w-10/12 flex-col flex items-center`}
+            className={`${loading ? 'block' : 'hidden'
+              } py-2 mb-6 w-10/12 flex-col flex items-center`}
           >
             <Skeleton animation="wave" height={35} width={120} />
           </div>

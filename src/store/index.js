@@ -7,13 +7,17 @@ import changeReducer from './reducers/change'
 import userProfileReducer from './reducers/ProfileReducer'
 import authReducer from './reducers/auth'
 import setAuthorization from '../utils/setAuthorization'
+import LocationReducer from './reducers/LocationReducer'
+import AccomodationReducer from './reducers/AccomodationReducer'
 
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   reset: resetReducer,
   change: changeReducer,
+  LocationsData: LocationReducer,
   userProfile: userProfileReducer,
+  accommodationsData: AccomodationReducer,
 })
 
 const logger = () => (next) => (action) => {
