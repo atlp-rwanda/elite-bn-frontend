@@ -5,16 +5,52 @@ import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify'
+import Skeleton  from 'react-loading-skeleton'
+
+const load = (specificAcc) =>{
+  return (
+    specificAcc.map((accommodation) => (
+      <div
+        id={`${accommodation.id}`}
+        className="flex space-x-4 h-52  shadow-md  mt-2 ml-4"
+        onClick={() => {
+        }}
+      >
+        <img src={`${accommodation.image}`} onError={(e) => e.currentTarget.src = 'https://res.cloudinary.com/bn47/image/upload/v1609963683/sample.jpg'} className="w-1/2" alt="hotel" />
+        <div className="py-4">
+          <p className="text-xl font-normal text-gray-600 uppercase">{accommodation.name}</p>
+          <p className="text-sm font-thin text-gray-500">
+            Capacity:
+            {accommodation.capacity}
+          </p>
+          <p className="text-sm font-thin text-gray-500">
+            Available Rooms:
+            {accommodation.roomsLeft}
+          </p>
+          <p className="text-sm font-thin text-gray-500">
+            Cost:
+            {accommodation.cost}
+            {' '}
+            FRW
+          </p>
+          <Facilities facilities={accommodation.facilities} />
+        </div>
+      </div>
+    ))
+  )
+}
 
 const BookAccommodation = () => {
   const token = localStorage.getItem('jwtToken');
-
   const [checkinDate, setCheckinDate] = useState(new Date());
   const [checkoutDate, setCheckoutDate] = useState(new Date());
   const [bkdAcc, setBkbAcc] = useState([]);
   const [specificAcc, setSpecificAcc] = useState([]);
   const [bookedAccommodations, setBookedAccommodations] = useState(['la folie']);
   const [active, setActive] = useState(1);
+  const [specificLoaded, setspecificLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [focusAccommodation, setFocusAccommodation] = useState({
     image: 'https://res.cloudinary.com/bn47/image/upload/v1609963683/sample.jpg',
@@ -22,7 +58,15 @@ const BookAccommodation = () => {
 
   let maxBooked;
   useEffect(() => {
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+    }, 5000);
+
     const getBkdAcc = async () => {
+
+      changeTab(1);
+      shiftTab('nav-all');
       const getBookedAccommodations = async () => {
         const tasksFromServer = await BookedAccommodations();
         setBookedAccommodations(tasksFromServer);
@@ -39,11 +83,12 @@ const BookAccommodation = () => {
         });
       });
     };
-    shiftTab('nav-all');
+
     getBkdAcc();
   }, []);
 
   const changeTab = (n) => {
+    console.log(n)
     setActive(n)
   };
   const openAccommodationBook = (accommodation) => {
@@ -58,13 +103,16 @@ const BookAccommodation = () => {
       document.getElementById('mainAvailable').style.display = 'grid';
     }
   };
-
   const BookedAccommodations = async () => {
+  try{
     const res = await axios.get('https://elite-staging.herokuapp.com/api/v1/booking/availableAccomodations', {
       headers: { Authorization: `Bearer ${token}` },
 
     });
     return res.data.data;
+  }catch(e){
+      toast.error('Failed to find booked accommodations')
+  }
   };
 
   const getSpecificAccommodations = async () => {
@@ -88,15 +136,21 @@ const BookAccommodation = () => {
       setSpecificAcc(retval);
 
       return retval;
+    }).catch((error)=>{
+      toast.error('Something went wrong');
     });
   };
   const BKDAccomnodat = async () => {
+   try{
     const res = await axios.get('https://elite-staging.herokuapp.com/api/v1/booking/bookedAccomodations',
-      {
-        headers: { Authorization: `Bearer ${token}` },
+    {
+      headers: { Authorization: `Bearer ${token}` },
 
-      });
-    return res.data.data;
+    });
+  return res.data.data;
+   }catch(e){
+    toast.error('Something went wrong')
+   }
   };
 
   const BookThisAccommodation = async (accommodation) => {
@@ -114,12 +168,10 @@ const BookAccommodation = () => {
           data,
         },
       );
-      alert('Accommodation Was succesfully booked');
+      toast.success('The accommodation was booked successfully')
       return res.data.data;
     } catch (error) {
-      // alert(error);
-      document.getElementById('processor').style.display = 'block';
-      document.getElementById('processor').innerHTML = 'Something went wrong';
+      toast.error('Something went wrong')
       console.log(error.response);
     }
   };
@@ -130,7 +182,7 @@ const BookAccommodation = () => {
         <div id="navbar" className="flex space-x-4 w-full items-center mt-4">
           <p
             id="nav-all"
-            className={`${active === 1 ? 'text-gray-100': 'text-blue-700'} ${active === 1 ? 'bg-blue-700': 'bg-white'} px-2  mb-2 py-2 text-lg  border-b-1  uppercase ${active === 1 ? 'font-bold': 'font-normal'}  ${active === 1 ? 'border-b-4 border-blue-700' : ''}`}
+            className={`${active === 1 ? 'text-gray-100': 'text-blue-700'} ${active === 1 ? 'bg-blue-700': 'bg-white'} px-2  mb-2 py-2 text-lg  border-b-1 cursor-pointer  uppercase ${active === 1 ? 'font-bold': 'font-normal'}  ${active === 1 ? 'border-b-4 border-blue-700' : ''}`}
             onClick={(e) => {
               changeTab(1);
               shiftTab(e.target.id);
@@ -141,7 +193,7 @@ const BookAccommodation = () => {
           </p>
           <p
             id="nav-available"
-            className={`${active === 2 ? 'text-gray-100': 'text-blue-700'} ${active === 2 ? 'bg-blue-700': 'bg-white'} px-2 mb-2 py-2 uppercase text-lg ${active === 2 ? 'font-bold': 'font-normal'} ${active === 2 ? 'border-b-4 border-blue-700' : ''}`}
+            className={`${active === 2 ? 'text-gray-100': 'text-blue-700'} ${active === 2 ? 'bg-blue-700': 'bg-white'} px-2 mb-2 py-2 cursor-pointer uppercase text-lg ${active === 2 ? 'font-bold': 'font-normal'} ${active === 2 ? 'border-b-4 border-blue-700' : ''}`}
             onClick={(e) => {
               changeTab(2);
               shiftTab(e.target.id);
@@ -153,14 +205,20 @@ const BookAccommodation = () => {
 
         </div>
         <div className="flex">
-          <div id="mainAll" className="space-x-4 mt-2">
+          <div id="mainAll" className={`space-x-4 mt-2 ${active === 1 ? 'grid grid-cols-2': 'none'}`}>
             {
-                   bookedAccommodations.map((accommodation) => (
-                     <div
+                    bookedAccommodations.map((accommodation) => (
+
+                      !loading ? (
+                        <div
                        id={`${accommodation.id}`}
-                       className={`flex space-x-4 bg-white  shadow-md  mt-2 ml-4 ${accommodation.roomsLeft > 0 ? '' : 'bg-red-50'}`}
+                       className={`flex space-x-4 h-52 bg-white  shadow-md  mt-2 ml-4 ${accommodation.roomsLeft > 0 ? '' : 'bg-red-50'}`}
                        onClick={() => {
-                         openAccommodationBook(accommodation);
+                         if(accommodation.roomsLeft > 0){
+                          openAccommodationBook(accommodation);
+                         }else{
+                           toast.error('This accommodation is not ready for booking')
+                         }
                        }}
                      >
                        <img src={`${accommodation.image}`} onError={(e) => e.currentTarget.src = 'https://res.cloudinary.com/bn47/image/upload/v1609963683/sample.jpg'} className="w-1/2" alt="hotel" />
@@ -182,43 +240,43 @@ const BookAccommodation = () => {
                          </p>
                          <Facilities facilities={accommodation.facilities} />
                        </div>
+                     </div>) :(
+                      <div
+                       id={`${accommodation.id}`}
+                       className={`flex space-x-4 h-52 bg-white  shadow-md  mt-2 ml-4 ${accommodation.roomsLeft > 0 ? '' : 'bg-red-50'}`}
+                       onClick={() => {
+                         if(accommodation.roomsLeft > 0){
+                          openAccommodationBook(accommodation);
+                         }else{
+                           toast.error('This accommodation is not ready for booking')
+                         }
+                       }}
+                     >
+                       <div className="w-1/2" alt="hotel"> <Skeleton /> </div>
+                       <div className="py-4">
+                         <p className="text-xl font-normal text-gray-600 uppercase">{accommodation.name}</p>
+                         <p className="text-sm font-thin text-gray-500">
+                          <Skeleton />
+                         </p>
+                         <p className="text-sm font-thin text-gray-500">
+                         <Skeleton />
+                         </p>
+                         <p className="text-sm font-thin text-gray-500">
+                         <Skeleton />
+                         </p>
+                         <Skeleton />
+                       </div>
                      </div>
+                     )
                    ))
                 }
           </div>
-          <div id="mainAvailable" className="mt-2 grid grid-cols-2">
+          <div id="mainAvailable" className={`${active === 2 ? 'grid grid-cols-2': 'none'} mt-2`}>
             {
                    specificAcc !== undefined ? (
-                     specificAcc.map((accommodation) => (
-                       <div
-                         id={`${accommodation.id}`}
-                         className="flex space-x-4  shadow-md  mt-2 ml-4"
-                         onClick={() => {
-                         }}
-                       >
-                         <img src={`${accommodation.image}`} onError={(e) => e.currentTarget.src = 'https://res.cloudinary.com/bn47/image/upload/v1609963683/sample.jpg'} className="w-1/2" alt="hotel" />
-                         <div className="py-4">
-                           <p className="text-xl font-normal text-gray-600 uppercase">{accommodation.name}</p>
-                           <p className="text-sm font-thin text-gray-500">
-                             Capacity:
-                             {accommodation.capacity}
-                           </p>
-                           <p className="text-sm font-thin text-gray-500">
-                             Available Rooms:
-                             {accommodation.roomsLeft}
-                           </p>
-                           <p className="text-sm font-thin text-gray-500">
-                             Cost:
-                             {accommodation.cost}
-                             {' '}
-                             FRW
-                           </p>
-                           <Facilities facilities={accommodation.facilities} />
-                         </div>
-                       </div>
-                     ))
+                    load(specificAcc)
                    ) : (
-                     <p />
+                     <p>No accommodations here</p>
                    )
 
                 }
@@ -226,7 +284,7 @@ const BookAccommodation = () => {
           </div>
         </div>
         <div id="accommodationOpener" className={` ${(focusAccommodation.name !== undefined) ? '' : 'hidden'}`}>
-          <div id="accommodationMain" className=" bg-gray-100  p-4 items-center flex space-x-2">
+          <div id="accommodationMain" className=" bg-gray-100   p-4 items-center flex space-x-2">
             <img src={`${focusAccommodation.image}`} onError={(e) => e.currentTarget.src = 'https://res.cloudinary.com/bn47/image/upload/v1609963683/sample.jpg'} className="w-1/2 h-full object-cover" alt="hotel" />
             <div className=" h-full flex-row space-y-1">
               <p className="text-2xl font-extrabold">Book This Accommodation Now</p>
@@ -284,6 +342,11 @@ onClick={() => {
               </div>
             </div>
           </div>
+           <div id="openBooking" >
+                    <div id="openbook">
+                    main
+                    </div>
+           </div>
 
         </div>
       </div>

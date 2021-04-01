@@ -22,7 +22,7 @@ export const DashBoard = ({
   return (
     <>
       {token ? (
-        <div className="bg-white grid grid-cols-12 h-full  grid-rows-mdScreen md:grid-rows-layout">
+        <div id="booker" className="bg-white grid grid-cols-12 h-full  grid-rows-mdScreen md:grid-rows-layout mb-20">
           <NavBar
             userData={userData}
             LogoutAction={LogoutAction}
