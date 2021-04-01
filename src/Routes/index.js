@@ -8,6 +8,7 @@ import Home from '../components/Home'
 import Auth from '../containers/Auth/Auth'
 import login from '../components/Login'
 import ResetPassword from '../components/ResetPassword/ResetPassword'
+import RateAndReview from '../components/rateAndReview'
 
 function index() {
   return (
@@ -25,6 +26,7 @@ function index() {
         component={UpdateProfile}
       />
       <Route exact path="/reset-password" component={ResetPassword} />
+      <Route exact path="/rateAndReview" component={RateAndReview} />
     </Switch>
   )
 }
