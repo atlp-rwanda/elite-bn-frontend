@@ -17,3 +17,9 @@ export const resetInitialState = {
 export const changeInitialState = {
   password: '',
 };
+
+export const travelInitialState = {
+  error: null,
+  data: null,
+  loading: false,
+};
