@@ -36,7 +36,7 @@ html,body{
   grid-template-columns: 1fr 1fr;
 }
 #accommodationOpener{
-  position: absolute;
+  position: fixed;
   background-color: #4d4d4db6;
   top:0;
   left:0;
@@ -55,7 +55,7 @@ html,body{
 #processor{
   display: none;
 }
-#openBooking #openBook{
+#openBooking {
   position: absolute;
   background-color: #4d4d4db6;
   top:0;
@@ -64,6 +64,13 @@ html,body{
   height: 100%;
   z-index: 1000;
 }
+#openBooking #openbook{
+  width: 70%;
+  margin-left: 15%;
+  height: 70%;
+  margin-top: 7%;
+}
+
 #booker{
   height: 100%;
   width: 100%;

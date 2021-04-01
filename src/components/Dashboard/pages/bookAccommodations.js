@@ -34,7 +34,16 @@ const load = (specificAcc) =>{
             {' '}
             FRW
           </p>
-          <Facilities facilities={accommodation.facilities} />
+          <p className="text-sm font-thin text-gray-500">
+            Check In Date:
+            {accommodation.checkinDate}
+            {' '}
+          </p>
+          <p className="text-sm font-thin text-gray-500">
+            Check Out Date:
+            {accommodation.checkoutDate}
+            {' '}
+          </p>
         </div>
       </div>
     ))
@@ -49,7 +58,6 @@ const BookAccommodation = () => {
   const [specificAcc, setSpecificAcc] = useState([]);
   const [bookedAccommodations, setBookedAccommodations] = useState(['la folie']);
   const [active, setActive] = useState(1);
-  const [specificLoaded, setspecificLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [focusAccommodation, setFocusAccommodation] = useState({
@@ -75,7 +83,6 @@ const BookAccommodation = () => {
       getBookedAccommodations();
       const accomodationsFromServer = await BKDAccomnodat();
       maxBooked = accomodationsFromServer;
-      console.log(maxBooked);
       BKDAccomnodat().then((r) => {
         setBkbAcc(accomodationsFromServer);
         getSpecificAccommodations().then((k) => {
@@ -88,7 +95,6 @@ const BookAccommodation = () => {
   }, []);
 
   const changeTab = (n) => {
-    console.log(n)
     setActive(n)
   };
   const openAccommodationBook = (accommodation) => {
@@ -128,15 +134,18 @@ const BookAccommodation = () => {
       for (const bookedAcc of res.data.data) {
         for (const accWithId of maxBooked) {
           if (bookedAcc.id == accWithId.AccomodationId) {
-            console.log(bookedAcc);
-            retval.push(bookedAcc);
+            let bk = bookedAcc;
+            bk.checkinDate = (accWithId.checkinDate).toString().substring(0,10);
+            bk.checkoutDate = (accWithId.checkoutDate).toString().substring(0,10);
+            console.log(bk);
+            retval.push(bk);
           }
         }
       }
       setSpecificAcc(retval);
 
       return retval;
-    }).catch((error)=>{
+    }).catch(()=>{
       toast.error('Something went wrong');
     });
   };
@@ -205,7 +214,7 @@ const BookAccommodation = () => {
 
         </div>
         <div className="flex">
-          <div id="mainAll" className={`space-x-4 mt-2 ${active === 1 ? 'grid grid-cols-2': 'none'}`}>
+          <div id="mainAll" className={`space-x-4 mt-2 ${active === 1 ? 'grid grid-cols-2 md:hidden  md:flex-rows sm:flex  sm:flex-rows': 'none'}`}>
             {
                     bookedAccommodations.map((accommodation) => (
 
@@ -315,17 +324,13 @@ const BookAccommodation = () => {
                 <label htmlFor="checkout">Checkout Date</label>
                 <ReactDatePicker id="checkout" className="bg-transparent p-0 text-gray-500 focus:outline-none" locale="es" selected={checkoutDate} onChange={(date) => setCheckoutDate(date)} />
               </div>
-              <div>
-                <p id="processor">Processing ... </p>
-              </div>
 
               <div className=" mt-auto grid grid-cols-2 space-x-0.5 ">
                 <button
                   className="bg-gray-100 text-xl text-blue-700 font-normal px-2 py-1 border-2 border-blue-700"
 onClick={(e) => {
                       openAccommodationBook({ undefined });
-                      document.getElementById('processor').innerHTML = 'Processing ...';
-                      document.getElementById('processor').style.display = 'none';
+
                     }}
                 >
                   CANCEL
@@ -333,7 +338,6 @@ onClick={(e) => {
                 <button
                   className="bg-blue-700 text-xl text-gray-100 font-normal px-2 py-1"
 onClick={() => {
-                      document.getElementById('processor').style.display = 'block';
                       BookThisAccommodation(focusAccommodation);
                     }}
                 >
@@ -342,12 +346,6 @@ onClick={() => {
               </div>
             </div>
           </div>
-           <div id="openBooking" >
-                    <div id="openbook">
-                    main
-                    </div>
-           </div>
-
         </div>
       </div>
     </div>
