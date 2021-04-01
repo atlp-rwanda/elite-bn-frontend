@@ -49,7 +49,7 @@ function RateAndReview() {
   };
 
   return (
-    <div className="text-center mb-20">
+    <div className="text-center">
       <div>
         <div className="bg-blue-900 w-full h-28"></div>
         <h4 className="my-4">The Lion Hotel, North Adelaide, Sout Austraria</h4>
@@ -57,23 +57,23 @@ function RateAndReview() {
       <div className="my-10">
         <h6 className="mb-4">Rate Accomodation</h6>
         <div className="flex w-full justify-center">
-          <span className="mr-1 cursor-pointer" onClick={()=>{onClickRating(1)}}><AiFillStar /></span>
-          <span className="mr-1 cursor-pointer" onClick={()=>{onClickRating(2)}}><AiFillStar /></span>
-          <span className="mr-1 cursor-pointer" onClick={()=>{onClickRating(3)}}><AiFillStar /></span>
-          <span className="mr-1 cursor-pointer" onClick={()=>{onClickRating(4)}}><AiFillStar /></span>
-          <span className="mr-1 cursor-pointer" onClick={()=>{onClickRating(5)}}><AiFillStar /></span>
+          <span className="mr-1 cursor-pointer text-yellow-500 text-2xl" onClick={()=>{onClickRating(1)}}><AiFillStar /></span>
+          <span className="mr-1 cursor-pointer text-yellow-500 text-2xl" onClick={()=>{onClickRating(2)}}><AiFillStar /></span>
+          <span className="mr-1 cursor-pointer text-yellow-500 text-2xl" onClick={()=>{onClickRating(3)}}><AiFillStar /></span>
+          <span className="mr-1 cursor-pointer text-yellow-500 text-2xl" onClick={()=>{onClickRating(4)}}><AiFillStar /></span>
+          <span className="mr-1 cursor-pointer text-yellow-500 text-2xl" onClick={()=>{onClickRating(5)}}><AiFillStar /></span>
         </div>
       </div>
-      <div>
-        <form className="flex flex-col w-8/12 sm:w-6/12 m-auto mb-20" onSubmit={onSubmit}>
+      <div className="w-full">
+        <form className="flex flex-col sm:w-11/12 w-6/12 m-auto mb-20" onSubmit={onSubmit}>
           <textarea onChange={onChange} className="h-32 shadow-md p-2"/>
           <button type="submit" className="my-2 py-3 bg-blue-600 text-white rounded-sm">Submit your review</button>
         </form>
       </div>
-      <div>
+      <div className="mb-20 w-full">
         <h3 className="font-semibold mb-4">User reviews</h3>
         {reviews.map((singleReview) => (
-          <div className="rounded-sm border border-blue-300 p-4 w-10/12 sm:w-6/12 text-left m-auto" key={singleReview.id}>
+          <div className="rounded-sm border border-blue-300 p-4 sm:w-11/12 w-4/12 text-left m-auto mb-4" key={singleReview.id}>
             <div>
               <span className="font-semibold mr-1">Sarah</span>
               <span className="text-xs">2:43pm</span>
@@ -85,7 +85,6 @@ function RateAndReview() {
         ))}
       </div>
       <Footer />
-      )
     </div>
   );
 }
