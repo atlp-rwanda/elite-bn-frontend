@@ -29,8 +29,8 @@ const Users = (props) => {
     ))
   }
   return (
-    <div className="table-wrapper bg-white text-gray-600">
-      <table className="table-auto md:table-fixed w-full text-left border-collapse">
+    <div className="table-wrapper w-98 md:w-full overflow-x-auto bg-white text-gray-600">
+      <table className="table-auto  md:table-fixed w-full text-left border-collapse">
         <thead className="border-b-2">
           <tr>
             <th className="w-1/3 py-2 px-3 z-20 sticky top-0 text-sm font-semibold">
