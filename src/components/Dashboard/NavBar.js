@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FaUserEdit } from 'react-icons/fa'
 import { AiOutlineDown } from 'react-icons/ai'
@@ -27,7 +27,7 @@ const NavBar = ({ userData, LogoutAction }) => {
       history.push('/login')
     }, 3000)
   }
-  useEffect(() => {
+  React.useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 2000)
@@ -47,9 +47,8 @@ const NavBar = ({ userData, LogoutAction }) => {
               <div className="profile flex-row flex mr-2 md:mr-7">
                 <div className="flex-row flex relative">
                   <img
-                    className={`${
-                      loading ? 'hidden' : 'block'
-                    } w-6 h-6 rounded-3xl  mr-1`}
+                    className={`${loading ? 'hidden' : 'block'
+                      } w-6 h-6 rounded-3xl  mr-1`}
                     src={
                       profilePicture ||
                       'https://res.cloudinary.com/nrob/image/upload/v1613451239/npc5d5r9g0nyyihppqxd.png'
@@ -64,18 +63,16 @@ const NavBar = ({ userData, LogoutAction }) => {
                       {firstName}
                     </span>
                     <span
-                      className={`${
-                        loading ? 'block' : 'hidden'
-                      } z-20 mx-1 my-2`}
+                      className={`${loading ? 'block' : 'hidden'
+                        } z-20 mx-1 my-2`}
                     >
                       <Skeleton animation={false} width={50} />
                     </span>
 
                     <AiOutlineDown
                       onClick={() => setDropDown(!dropDown)}
-                      className={`${
-                        loading ? 'hidden' : 'block'
-                      } down text-xs ml-0.5 mt-1 cursor-pointer`}
+                      className={`${loading ? 'hidden' : 'block'
+                        } down text-xs ml-0.5 mt-1 cursor-pointer`}
                     />
                   </span>
                   <div>
@@ -108,15 +105,13 @@ const NavBar = ({ userData, LogoutAction }) => {
                       </div>
                     </div>
                     <div
-                      className={`${
-                        loading ? 'flex ml-0 md:ml-0' : 'flex ml-2 md:ml-4'
-                      }  `}
+                      className={`${loading ? 'flex ml-0 md:ml-0' : 'flex ml-2 md:ml-4'
+                        }  `}
                     >
                       <span>
                         <FiGlobe
-                          className={`text-lg ${
-                            loading ? 'hidden' : 'flex'
-                          } m-1`}
+                          className={`text-lg ${loading ? 'hidden' : 'flex'
+                            } m-1`}
                         />
                         <span
                           className={`${loading ? 'block' : 'hidden'} z-20`}
@@ -133,9 +128,8 @@ const NavBar = ({ userData, LogoutAction }) => {
                         English
                       </span>
                       <span
-                        className={`${
-                          loading ? 'block' : 'hidden'
-                        } z-20 mx-1 my-2`}
+                        className={`${loading ? 'block' : 'hidden'
+                          } z-20 mx-1 my-2`}
                       >
                         <Skeleton animation={false} width={50} />
                       </span>

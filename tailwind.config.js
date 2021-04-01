@@ -15,6 +15,11 @@ module.exports = {
           100: '#333',
           200: '#000',
         },
+        'cool-back-color': '#F8F8F8',
+        'textColor': '#000',
+        'blackColor1': '#333333',
+        'blackColor2': '#555555',
+        'colorCool': '#DB2777'
       },
       backgroundImage: (theme) => ({
         test1: "url('/src/images/test1.jpg')",
