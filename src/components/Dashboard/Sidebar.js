@@ -1,17 +1,30 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable  */
 import React, { useState } from 'react'
 import {
   AiFillCaretDown,
   AiOutlineCaretRight,
   AiOutlineRight,
 } from 'react-icons/ai'
-import { FaTimesCircle, FaUserShield } from 'react-icons/fa'
-import { RiUserSearchFill } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
+import { FaLinkedinIn, FaTimesCircle, FaUserShield } from 'react-icons/fa'
+import { RiUserSearchFill, RiCustomerService2Fill } from 'react-icons/ri'
+import { Link, NavLink } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import PropTypes from 'prop-types'
+import jwt from 'jsonwebtoken'
 
-const SideBar = () => {
-  const [down1, setDown1] = useState(false)
+const SideBar = ({ down }) => {
+  const [down1, setDown1] = useState(down)
   const [sideBar, setSideBar] = useState(false)
+  const [active, setActive] = useState(false)
+
+  const userInfo = jwt.decode(localStorage.jwtToken)
+
+  const { roleId } = userInfo
+
+  const notAuth = () => {
+    toast.error("Sorry, you don't have permission to perform this Action!")
+  }
 
   return (
     <>
@@ -74,7 +87,12 @@ const SideBar = () => {
                 down1 ? 'flex bg-blue-900' : 'hidden bg-blue-700'
               }  py-3  items-center w-full flex-col `}
             >
-              <li className="flex transition duration-500 ease-in-out  ml-8 py-1  transform hover:translate-x-3 hover:scale-110  w-full ">
+              <li
+                className={`flex  ${
+                  active ? 'bg-blue-800' : ''
+                }  transition duration-500 focus:bg-blue-800 hover:bg-blue-800 ease-in-out  w-10/12 py-1  transform hover:translate-x-3 hover:scale-110`}
+                onClick={() => setActive(!active)}
+              >
                 <RiUserSearchFill className="ml-1 mt-0.5" />
                 <Link to="/dashboard/profile/">
                   <span
@@ -85,6 +103,30 @@ const SideBar = () => {
                     User profile
                   </span>
                 </Link>
+              </li>
+              <li className="flex transition duration-500 ease-in-out hover:bg-blue-800   py-1  transform hover:translate-x-3 hover:scale-110  w-10/12">
+                <RiCustomerService2Fill className="ml-1 mt-0.5" />
+                {roleId === 3 || roleId === 1 ? (
+                  <Link to="/dashboard/users/">
+                    <span
+                      className={`${
+                        sideBar ? 'block' : 'hidden'
+                      }  text-sm ml-2 md:block`}
+                    >
+                      Assign Users
+                    </span>
+                  </Link>
+                ) : (
+                  <div onClick={notAuth}>
+                    <span
+                      className={`${
+                        sideBar ? 'block' : 'hidden'
+                      }  text-sm ml-2 md:block`}
+                    >
+                      Assign Users
+                    </span>
+                  </div>
+                )}
               </li>
             </ul>
           </article>
@@ -101,6 +143,14 @@ const SideBar = () => {
       </span>
     </>
   )
+}
+
+SideBar.propTypes = {
+  down: PropTypes.bool,
+}
+
+SideBar.defaultProps = {
+  down: false,
 }
 
 export default SideBar

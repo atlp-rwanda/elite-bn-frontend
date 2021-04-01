@@ -48,6 +48,7 @@ module.exports = {
         7: '45%',
       },
     },
+
     backgroundColor: (theme) => ({
       ...theme('colors'),
       primary: '#495AF1',
