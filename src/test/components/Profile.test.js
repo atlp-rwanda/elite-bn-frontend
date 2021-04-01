@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
-import { BrowserRouter, Link } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { shallow } from 'enzyme'
-import { AiFillLike, AiOutlineLogout, AiTwotoneStar } from 'react-icons/ai'
-import { MdModeComment } from 'react-icons/md'
-import Profile from '../../components/Dashboard/Profile'
-import store from '../../store'
+import React, { Component } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { shallow } from 'enzyme';
+import { AiFillLike, AiOutlineLogout, AiTwotoneStar } from 'react-icons/ai';
+import { MdModeComment } from 'react-icons/md';
+import Profile from '../../components/Dashboard/Profile';
+import store from '../../store';
 
-import NavBar from '../../components/Dashboard/NavBar'
-import SideBar from '../../components/Dashboard/Sidebar'
-import Footer from '../../components/Dashboard/Footer'
-import Pagination from '../../components/Dashboard/Pagination'
+import NavBar from '../../components/Dashboard/NavBar';
+import SideBar from '../../components/Dashboard/Sidebar';
+import Footer from '../../components/Dashboard/Footer';
+import Pagination from '../../components/Dashboard/Pagination';
 import {
   UpdateProfile,
   mapStateToProps,
   mapDispatchToProps,
-} from '../../components/Dashboard/pages/UpdateProfile'
-import { fetchUserInfo } from '../../store/actions/profileAction'
-import { logoutActionCreator } from '../../store/actions/LogoutAction'
+} from '../../components/Dashboard/pages/UpdateProfile';
+import { fetchUserInfo } from '../../store/actions/profileAction';
+import { logoutActionCreator } from '../../store/actions/LogoutAction';
 
 const SetUp = () => {
   const userData = {
@@ -28,57 +28,57 @@ const SetUp = () => {
     preferedLanguage: 'English',
     profilePicture:
       'https://res.cloudinary.com/nrob/image/upload/v1614265842/zcnxlc30wgxkftlv1ryy.jpg',
-  }
-  const ProfileComponent = shallow(<Profile userData={userData} />)
-  return ProfileComponent
-}
+  };
+  const ProfileComponent = shallow(<Profile userData={userData} />);
+  return ProfileComponent;
+};
 
 describe('Test user profile info', () => {
-  let ProfileComponent
+  let ProfileComponent;
   beforeEach(() => {
-    ProfileComponent = SetUp()
-  })
+    ProfileComponent = SetUp();
+  });
   test('test length', () => {
-    expect(ProfileComponent.length).toBe(1)
-  })
+    expect(ProfileComponent.length).toBe(1);
+  });
   test('should test profile components', () => {
-    const button = ProfileComponent.find('#button')
-    expect(button.length).toBe(1)
-  })
+    const button = ProfileComponent.find('#button');
+    expect(button.length).toBe(1);
+  });
   test('should test btn text', () => {
-    const button = ProfileComponent.find('#button')
-    expect(button.text()).toEqual('Update')
-  })
+    const button = ProfileComponent.find('#button');
+    expect(button.text()).toEqual('Update');
+  });
   test('should render firstName', () => {
-    const button = ProfileComponent.find('#firstName')
-    expect(button.length).toBe(1)
-  })
+    const button = ProfileComponent.find('#firstName');
+    expect(button.length).toBe(1);
+  });
   test('should render lastName', () => {
-    const button = ProfileComponent.find('#lastName')
-    expect(button.length).toBe(1)
-  })
+    const button = ProfileComponent.find('#lastName');
+    expect(button.length).toBe(1);
+  });
   test('should should render email', () => {
-    const button = ProfileComponent.find('#email')
-    expect(button.length).toBe(1)
-  })
+    const button = ProfileComponent.find('#email');
+    expect(button.length).toBe(1);
+  });
   test('should test profile components', () => {
-    const button = ProfileComponent.find('#officeAddres')
-    expect(button.length).toBe(1)
-  })
-})
+    const button = ProfileComponent.find('#officeAddres');
+    expect(button.length).toBe(1);
+  });
+});
 
 describe('Test navbar ', () => {
-  let wrapper
+  let wrapper;
   const userData = {
     firstName: '',
     lastName: '',
-  }
+  };
   beforeEach(() => {
-    wrapper = shallow(<NavBar userData={userData} />)
-  })
+    wrapper = shallow(<NavBar userData={userData} />);
+  });
   test('Test dropdown button', () => {
-    expect(wrapper.length).toBe(1)
-  })
+    expect(wrapper.length).toBe(1);
+  });
   test('should test test link', () => {
     expect(
       wrapper.find('.flex').contains(
@@ -88,46 +88,46 @@ describe('Test navbar ', () => {
           </Link>
         </div>,
       ),
-    ).toEqual(true)
-  })
+    ).toEqual(true);
+  });
   test('should test click btn', () => {
-    wrapper.find('.down').simulate('click')
-  })
-})
+    wrapper.find('.down').simulate('click');
+  });
+});
 
 describe('Test sidebar', () => {
-  let wrapper
+  let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<SideBar />)
-  })
+    wrapper = shallow(<SideBar />);
+  });
 
   test('test content component', () => {
-    expect(wrapper.length).toBe(1)
-  })
+    expect(wrapper.length).toBe(1);
+  });
 
   test('Close sidebar (decrease sidebar width)', () => {
-    wrapper.find('.close').simulate('click')
-  })
+    wrapper.find('.close').simulate('click');
+  });
   test('Increase side bar on small screen sidebar ', () => {
-    wrapper.find('.open').simulate('click')
-  })
+    wrapper.find('.open').simulate('click');
+  });
   test('should up', () => {
-    wrapper.find('.up').simulate('click')
-  })
+    wrapper.find('.up').simulate('click');
+  });
   test('Should down ', () => {
-    wrapper.find('.dw').simulate('click')
-  })
-})
+    wrapper.find('.dw').simulate('click');
+  });
+});
 
 describe('Test  footer', () => {
-  let wrapper
+  let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Footer />)
-  })
+    wrapper = shallow(<Footer />);
+  });
 
   test('test content component', () => {
-    expect(wrapper.length).toBe(1)
-  })
+    expect(wrapper.length).toBe(1);
+  });
 
   test('Increase side bar on small screen sidebar ', () => {
     expect(
@@ -168,7 +168,8 @@ describe('Test  footer', () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 items-end gap-2 mt-2  text-gray-500 h-full">
             <div />
             <div className="text-sm">
-              &copy; Barefoot nomad all right reserved{' '}
+              &copy; Barefoot nomad all right reserved
+              {' '}
             </div>
             <div className="text-sm pl-3">
               <Link to="/dashboard/profile">Privacy</Link>
@@ -179,23 +180,23 @@ describe('Test  footer', () => {
           </div>
         </div>,
       ),
-    ).toEqual(true)
-  })
-})
+    ).toEqual(true);
+  });
+});
 
 describe('Test Pagination component', () => {
   test('should test pagination components', () => {
-    const pages = shallow(<Pagination />)
+    const pages = shallow(<Pagination />);
 
     expect(
       pages.contains(
         <>
-          <div className="pagination flex mt-8  items-center justify-center "></div>
+          <div className="pagination flex mt-8  items-center justify-center " />
         </>,
       ),
-    ).toEqual(true)
-  })
-})
+    ).toEqual(true);
+  });
+});
 
 describe('Test update profile form component', () => {
   test('should test pagination components', () => {
@@ -205,35 +206,35 @@ describe('Test update profile form component', () => {
       </Provider>,
     )
       .childAt(0)
-      .dive()
+      .dive();
 
-    expect(pages.length).toBe(1)
-  })
+    expect(pages.length).toBe(1);
+  });
   test('should test map state', () => {
     const state = {
       user: {},
       userProfile: {
         userData: {},
       },
-    }
-    const mapState = mapStateToProps(state)
+    };
+    const mapState = mapStateToProps(state);
     expect(mapState).toEqual({
       Logout: state.user,
       userData: state.userProfile.userData,
-    })
-  })
+    });
+  });
   it('should dispatch fetchUserInfo when onClick() is called', () => {
-    const dispatch = jest.fn()
-    const props = mapDispatchToProps(dispatch)
-    const prop1 = mapDispatchToProps(dispatch)
-    props.LogoutAction()
-    prop1.GetUserProfile()
-  })
+    const dispatch = jest.fn();
+    const props = mapDispatchToProps(dispatch);
+    const prop1 = mapDispatchToProps(dispatch);
+    props.LogoutAction();
+    prop1.GetUserProfile();
+  });
   test('should test singleProfile components', () => {
-    let Logout
-    let LogoutAction
-    const userData = {}
-    const wrapper = shallow(<UpdateProfile />)
+    let Logout;
+    let LogoutAction;
+    const userData = {};
+    const wrapper = shallow(<UpdateProfile />);
     expect(
       wrapper.contains(
         <div className="bg-gray-100 grid grid-cols-12  grid-rows-mdScreen md:grid-rows-layout  ">
@@ -247,6 +248,6 @@ describe('Test update profile form component', () => {
           <Footer />
         </div>,
       ),
-    ).toEqual(false)
-  })
-})
+    ).toEqual(false);
+  });
+});

@@ -1,4 +1,4 @@
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string('First name must be a string')
@@ -13,5 +13,5 @@ const validationSchema = Yup.object().shape({
   lastName: Yup.string()
     .matches(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g, 'Invalid name'),
   profilePicture: Yup.mixed(),
-})
-export default validationSchema
+});
+export default validationSchema;

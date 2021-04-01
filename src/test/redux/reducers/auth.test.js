@@ -20,8 +20,8 @@ describe('auth Reducers', () => {
         },
         authSuccess({
           message: 'message',
-        })
-      )
+        }),
+      ),
     ).toEqual({
       error: null,
       loading: false,
@@ -41,8 +41,8 @@ describe('auth Reducers', () => {
           token: null,
           userId: null,
         },
-        authFail('error')
-      )
+        authFail('error'),
+      ),
     ).toEqual({
       error: 'error',
       loading: false,
@@ -62,8 +62,8 @@ describe('auth Reducers', () => {
           token: null,
           userId: null,
         },
-        authStart()
-      )
+        authStart(),
+      ),
     ).toEqual({
       error: null,
       loading: true,

@@ -8,7 +8,7 @@ describe('Test <DropMenu />', () => {
     render(
       <Router>
         <DropMenu />
-      </Router>
+      </Router>,
     );
   });
   it('should handle click', () => {

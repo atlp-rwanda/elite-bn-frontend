@@ -22,7 +22,7 @@ describe('Test Single profile component', () => {
         <BrowserRouter>
           <SingleProfile />
         </BrowserRouter>
-      </Provider>
+      </Provider>,
     );
     expect(pages.length).toBe(1);
   });
@@ -58,8 +58,8 @@ describe('Test Single profile component', () => {
           <SideBar />
           <Profile userData={userData} />
           <Footer />
-        </div>
-      )
+        </div>,
+      ),
     ).toEqual(false);
   });
 });

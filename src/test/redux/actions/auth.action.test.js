@@ -1,4 +1,6 @@
-import { authStart, authFail, authSuccess, auth } from '../../../store/actions/auth';
+import {
+  authStart, authFail, authSuccess, auth,
+} from '../../../store/actions/auth';
 import { AUTH_START, AUTH_FAIL, AUTH_SUCCESS } from '../../../constants/actionTypes';
 
 describe('Test Signup action', () => {

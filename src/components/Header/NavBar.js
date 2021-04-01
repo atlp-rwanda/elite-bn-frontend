@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import './navCSS.css'
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import './navCSS.css';
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false)
-  const toggle = () => setOpen(!open)
+  const [open, setOpen] = useState(false);
+  const toggle = () => setOpen(!open);
   return (
     <div className="md:flex justify-between items-center bg-gray-100  md:px-20  px-5 p-2 h-full md:p-5">
       <div className="flex justify-between items-center">
@@ -59,7 +59,7 @@ const NavBar = () => {
         </div>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

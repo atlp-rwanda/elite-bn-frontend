@@ -1,17 +1,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   AiFillCaretDown,
   AiOutlineCaretRight,
   AiOutlineRight,
-} from 'react-icons/ai'
-import { FaTimesCircle, FaUserShield } from 'react-icons/fa'
-import { RiUserSearchFill } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
+} from 'react-icons/ai';
+import { FaTimesCircle, FaUserShield } from 'react-icons/fa';
+import { RiUserSearchFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 const SideBar = () => {
-  const [down1, setDown1] = useState(false)
-  const [sideBar, setSideBar] = useState(false)
+  const [down1, setDown1] = useState(false);
+  const [sideBar, setSideBar] = useState(false);
+  const [tripMenu, setTripMenu] = useState(false);
 
   return (
     <>
@@ -88,6 +89,50 @@ const SideBar = () => {
               </li>
             </ul>
           </article>
+          <article className="flex  w-full items-center flex-col ">
+            <div
+              className={`flex ${
+                tripMenu ? 'bg-blue-900' : 'bg-blue-700'
+              }    w-full py-2 justify-around md:justify-between px-4 border-b border-blue-800 `}
+            >
+              <h1 className="flex">
+                <FaUserShield className="mt-1 mr-1" />
+                <span className={`${sideBar ? 'block' : 'hidden'}  lg:block`}>
+                  Travel request
+                </span>
+              </h1>
+              <AiFillCaretDown
+                className={`${
+                  down1 ? 'block' : 'hidden'
+                } up cursor-pointer mt-1.5 text-sm`}
+                onClick={() => setTripMenu(!tripMenu)}
+              />
+              <AiOutlineCaretRight
+                className={`${
+                  tripMenu ? 'hidden' : 'block'
+                } dw cursor-pointer mt-1.5 text-sm`}
+                onClick={() => setTripMenu(!tripMenu)}
+              />
+            </div>
+            <ul
+              className={`  ${
+                tripMenu ? 'flex bg-blue-900' : 'hidden bg-blue-700'
+              }  py-3  items-center w-full flex-col `}
+            >
+              <li className="flex transition duration-500 ease-in-out  ml-8 py-1  transform hover:translate-x-3 hover:scale-110  w-full ">
+                <RiUserSearchFill className="ml-1 mt-0.5" />
+                <Link to="/dashboard/createtravelrequest/">
+                  <span
+                    className={`${
+                      sideBar ? 'block' : 'hidden'
+                    }  text-sm ml-2 md:block`}
+                  >
+                    create trip
+                  </span>
+                </Link>
+              </li>
+            </ul>
+          </article>
         </section>
       </div>
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
@@ -100,7 +145,7 @@ const SideBar = () => {
         <FaTimesCircle />
       </span>
     </>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;

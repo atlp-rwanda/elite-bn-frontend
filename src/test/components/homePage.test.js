@@ -8,7 +8,7 @@ describe('Home Page', () => {
     render(
       <Router>
         <Home />
-      </Router>
+      </Router>,
     );
   });
 });
