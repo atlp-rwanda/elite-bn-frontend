@@ -8,6 +8,8 @@ import Home from '../components/Home'
 import Auth from '../containers/Auth/Auth'
 import login from '../components/Login'
 import ResetPassword from '../components/ResetPassword/ResetPassword'
+import BookAccommodation from '../components/Dashboard/pages/BookAcc'
+import skl from '../components/Dashboard/pages/skl'
 
 function index() {
   return (
@@ -15,7 +17,9 @@ function index() {
       <Route path="/register" component={Auth} />
       <Route exact path="/" component={Home} />
       <Route exact path="/dashboard/profile/" component={SingleProfile} />
+      <Route exact path="/accommodation/book" component={BookAccommodation} />
       <Route exact path="/login" component={login} />
+      <Route exact path="/tst" component={skl} />
 
       <Route exact path="/dashboard" component={DashBoard} />
       <Route exact path="/reset-password" component={ResetPassword} />
