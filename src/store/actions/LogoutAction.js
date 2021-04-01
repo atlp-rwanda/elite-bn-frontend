@@ -1,31 +1,25 @@
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { LOGOUT_FAILED, LOGOUT_SUCCESS } from './ActionTypes'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { LOGOUT_FAILED, LOGOUT_SUCCESS } from './ActionTypes';
 
-const logoutSuccess = () => {
-  return {
-    type: LOGOUT_SUCCESS,
+const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS,
+});
+const logoutFailed = () => ({
+  type: LOGOUT_FAILED,
+});
+const token = localStorage.getItem('jwtToken');
+
+const logoutActionCreator = () => (dispatch) => {
+  if (token) {
+    dispatch(logoutSuccess);
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('userInfo');
+  } else {
+    toast.error('User logout failed');
+
+    dispatch(logoutFailed);
   }
-}
-const logoutFailed = () => {
-  return {
-    type: LOGOUT_FAILED,
-  }
-}
-const token = localStorage.getItem('jwtToken')
+};
 
-const logoutActionCreator = () => {
-  return (dispatch) => {
-    if (token) {
-      dispatch(logoutSuccess)
-      localStorage.removeItem('jwtToken')
-      localStorage.removeItem('userInfo')
-    } else {
-      toast.error('User logout failed')
-
-      dispatch(logoutFailed)
-    }
-  }
-}
-
-export { logoutSuccess, logoutFailed, logoutActionCreator }
+export { logoutSuccess, logoutFailed, logoutActionCreator };

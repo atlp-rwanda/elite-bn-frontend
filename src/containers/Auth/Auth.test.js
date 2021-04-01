@@ -1,6 +1,8 @@
 import React from 'react';
 import Enzyme from 'enzyme';
-import { fireEvent, render, waitFor, cleanup, screen, act } from '@testing-library/react';
+import {
+  fireEvent, render, waitFor, cleanup, screen, act,
+} from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Adapter from 'enzyme-adapter-react-16';
 import MutationObserver from 'mutation-observer';
@@ -14,15 +16,13 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Test <Auth />', () => {
   beforeEach(async () => {
-    await act(async () =>
-      render(
-        <Provider store={store}>
-          <Router>
-            <Auth />
-          </Router>
-        </Provider>
-      )
-    );
+    await act(async () => render(
+      <Provider store={store}>
+        <Router>
+          <Auth />
+        </Router>
+      </Provider>,
+    ));
     act(() => {
       jest.useFakeTimers();
       jest.advanceTimersByTime(3000);

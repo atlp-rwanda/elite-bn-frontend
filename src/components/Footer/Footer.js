@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer1 = () => (
   <div className="bg-white">
@@ -67,6 +67,6 @@ const Footer1 = () => (
       </ul>
     </div>
   </div>
-)
+);
 
-export default Footer1
+export default Footer1;

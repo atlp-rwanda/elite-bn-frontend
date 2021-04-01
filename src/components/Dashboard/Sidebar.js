@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   AiFillCaretDown,
   AiOutlineCaretRight,
   AiOutlineRight,
-} from 'react-icons/ai'
-import { FaTimesCircle, FaUserShield } from 'react-icons/fa'
-import { RiUserSearchFill } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
+} from 'react-icons/ai';
+import { FaTimesCircle, FaUserShield } from 'react-icons/fa';
+import { RiUserSearchFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 const SideBar = () => {
-  const [down1, setDown1] = useState(false)
-  const [sideBar, setSideBar] = useState(false)
-  const [tripMenu, setTripMenu] = useState(false)
+  const [down1, setDown1] = useState(false);
+  const [sideBar, setSideBar] = useState(false);
+  const [tripMenu, setTripMenu] = useState(false);
 
   return (
     <>
@@ -145,7 +145,7 @@ const SideBar = () => {
         <FaTimesCircle />
       </span>
     </>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;

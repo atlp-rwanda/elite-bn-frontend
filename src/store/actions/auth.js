@@ -31,12 +31,11 @@ export const auth = (firstName, lastName, email, password) => (dispatch) => {
       dispatch(authSuccess(response.data));
     })
     .catch((error) => {
-      const message =
-        (error.response &&
-          error.response.data &&
-          (error.response.data.message || error.response.data.Message)) ||
-        error.message ||
-        error.toString();
+      const message = (error.response
+          && error.response.data
+          && (error.response.data.message || error.response.data.Message))
+        || error.message
+        || error.toString();
       dispatch(authFail(message));
     });
 };

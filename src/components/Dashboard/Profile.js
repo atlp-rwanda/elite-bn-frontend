@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
-import { MdEmail, MdLanguage } from 'react-icons/md'
-import { IoLocationSharp } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
-import Skeleton from 'react-loading-skeleton'
-import Pagination from './Pagination'
+import React, { useEffect, useState } from 'react';
+import { MdEmail, MdLanguage } from 'react-icons/md';
+import { IoLocationSharp } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import Pagination from './Pagination';
+
 const Profile = ({ userData }) => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const {
     firstName,
     lastName,
@@ -14,12 +15,12 @@ const Profile = ({ userData }) => {
     profilePicture,
     officeAddres,
     preferedLanguage,
-  } = userData
+  } = userData;
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }, [])
+      setLoading(false);
+    }, 3000);
+  }, []);
   return (
     <>
       <div className="col-start-3    row-start-2  col-end-13 p-4 md:p-12">
@@ -36,8 +37,8 @@ const Profile = ({ userData }) => {
                   loading ? 'hidden' : 'block'
                 } rounded-full h-24 md:h-32 w-24 md:w-32 absolute  inset-x-1/4 md:inset-x-2/4 -bottom-16  border-white  border-8 `}
                 src={
-                  profilePicture ||
-                  'https://res.cloudinary.com/nrob/image/upload/v1613451239/npc5d5r9g0nyyihppqxd.png'
+                  profilePicture
+                  || 'https://res.cloudinary.com/nrob/image/upload/v1613451239/npc5d5r9g0nyyihppqxd.png'
                 }
                 alt="Profile"
               />
@@ -66,7 +67,12 @@ const Profile = ({ userData }) => {
                 loading ? ' hidden' : 'block'
               } text-2xl   flex justify-between text-gray-700`}
             >
-              <span id="firstName"> {firstName}</span> <br />
+              <span id="firstName">
+                {' '}
+                {firstName}
+              </span>
+              {' '}
+              <br />
               <span className="pl-2" id="lastName">
                 {' '}
                 {lastName}
@@ -176,6 +182,6 @@ const Profile = ({ userData }) => {
         <Pagination />
       </div>
     </>
-  )
-}
-export default Profile
+  );
+};
+export default Profile;

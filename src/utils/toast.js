@@ -1,4 +1,4 @@
-import Toastify from 'toastify-js'
+import Toastify from 'toastify-js';
 
 const successToast = (fullName) => {
   Toastify({
@@ -8,8 +8,8 @@ const successToast = (fullName) => {
     position: 'right',
     backgroundColor: 'green',
     color: 'white',
-  }).showToast()
-}
+  }).showToast();
+};
 
 const errorToast = (errorMessage) => {
   Toastify({
@@ -19,6 +19,6 @@ const errorToast = (errorMessage) => {
     position: 'right',
     backgroundColor: 'red',
     color: 'white',
-  }).showToast()
-}
-export { successToast, errorToast }
+  }).showToast();
+};
+export { successToast, errorToast };

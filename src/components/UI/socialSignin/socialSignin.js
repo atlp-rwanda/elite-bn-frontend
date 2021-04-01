@@ -1,20 +1,20 @@
-import React from 'react'
-import fbIcon from '../../../assets/icons8-facebook.svg'
-import googleIcon from '../../../assets/icons8-google.svg'
-import Button from '../Button/Button'
+import React from 'react';
+import fbIcon from '../../../assets/icons8-facebook.svg';
+import googleIcon from '../../../assets/icons8-google.svg';
+import Button from '../Button/Button';
 
 const googleHandler = () => {
   window.open(
     'https://elite-staging.herokuapp.com/api/v1/users/oauth/google',
     '_self',
-  )
-}
+  );
+};
 const facebookHandler = () => {
   window.open(
     'https://elite-staging.herokuapp.com/api/v1/users/oauth/facebook',
     '_self',
-  )
-}
+  );
+};
 const socialSignin = () => (
   <div>
     <Button clicked={() => googleHandler()} btnType="GoogleSignup">
@@ -27,6 +27,6 @@ const socialSignin = () => (
       <p> Continue with facebook </p>
     </Button>
   </div>
-)
+);
 
-export default socialSignin
+export default socialSignin;

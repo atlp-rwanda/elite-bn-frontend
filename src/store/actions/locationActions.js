@@ -2,17 +2,17 @@
 import axios from 'axios';
 
 import {
-  ACCOMODATION_LIST_FAIL,
-  ACCOMODATION_LIST_REQUEST,
-  ACCOMODATION_LIST_SUCCESS,
-} from '../../constants/accomodationConstants';
+  LOCATION_LIST_FAIL,
+  LOCATION_LIST_REQUEST,
+  LOCATION_LIST_SUCCESS,
+} from '../../constants/locationConstants';
 
-const url = 'https://elite-staging.herokuapp.com/api/v1/accomodations';
+const url = 'https://elite-staging.herokuapp.com/api/v1/locations';
 
-export const listAccomodation = () => async (dispatch, getState) => {
+export const listLocation = () => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ACCOMODATION_LIST_REQUEST,
+      type: LOCATION_LIST_REQUEST,
     });
 
     const {
@@ -28,12 +28,12 @@ export const listAccomodation = () => async (dispatch, getState) => {
     const { data } = await axios.get(`${url}/read`, config);
 
     dispatch({
-      type: ACCOMODATION_LIST_SUCCESS,
+      type: LOCATION_LIST_SUCCESS,
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: ACCOMODATION_LIST_FAIL,
+      type: LOCATION_LIST_FAIL,
       payload: error.response.data.message,
     });
   }

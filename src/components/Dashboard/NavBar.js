@@ -3,35 +3,35 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { FaUserEdit } from 'react-icons/fa'
-import { AiOutlineDown } from 'react-icons/ai'
-import { FiGlobe } from 'react-icons/fi'
-import { IoLogOutOutline } from 'react-icons/io5'
-import { toast, ToastContainer } from 'react-toastify'
-import Skeleton from 'react-loading-skeleton'
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { FaUserEdit } from 'react-icons/fa';
+import { AiOutlineDown } from 'react-icons/ai';
+import { FiGlobe } from 'react-icons/fi';
+import { IoLogOutOutline } from 'react-icons/io5';
+import { toast, ToastContainer } from 'react-toastify';
+import Skeleton from 'react-loading-skeleton';
 
 const NavBar = ({ userData, LogoutAction }) => {
-  const history = useHistory()
-  const [dropDown, setDropDown] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const history = useHistory();
+  const [dropDown, setDropDown] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const { firstName, profilePicture } = userData
+  const { firstName, profilePicture } = userData;
   const logout = () => {
-    toast.success('User logout successfully')
+    toast.success('User logout successfully');
 
-    LogoutAction()
+    LogoutAction();
 
     setTimeout(() => {
-      history.push('/login')
-    }, 3000)
-  }
+      history.push('/login');
+    }, 3000);
+  };
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
+      setLoading(false);
+    }, 2000);
+  }, []);
   return (
     <div className="col-span-full  w-full  col-start-3  col-end-14 shadow-xl  ">
       <header className="flex justify-between h-16 align-center items-center font-mainFont relative   ">
@@ -51,8 +51,8 @@ const NavBar = ({ userData, LogoutAction }) => {
                       loading ? 'hidden' : 'block'
                     } w-6 h-6 rounded-3xl  mr-1`}
                     src={
-                      profilePicture ||
-                      'https://res.cloudinary.com/nrob/image/upload/v1613451239/npc5d5r9g0nyyihppqxd.png'
+                      profilePicture
+                      || 'https://res.cloudinary.com/nrob/image/upload/v1613451239/npc5d5r9g0nyyihppqxd.png'
                     }
                     alt="profile"
                   />
@@ -152,7 +152,7 @@ const NavBar = ({ userData, LogoutAction }) => {
       </header>
       <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

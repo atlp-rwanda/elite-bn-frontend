@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
-import Skeleton from 'react-loading-skeleton'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import validationSchema from './validations/userProfileValidation'
-import svg from '../../assets/833.svg'
+import React, { useEffect, useState } from 'react';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import Skeleton from 'react-loading-skeleton';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import validationSchema from './validations/userProfileValidation';
+import svg from '../../assets/833.svg';
 
 const UpdateForm = ({ userData }) => {
   const {
@@ -19,9 +21,9 @@ const UpdateForm = ({ userData }) => {
     preferedLanguage,
     officeAddres,
     profilePicture,
-  } = userData
-  const [loading, setLoading] = useState(true)
-  const [spinner, setSpinner] = useState(false)
+  } = userData;
+  const [loading, setLoading] = useState(true);
+  const [spinner, setSpinner] = useState(false);
 
   const initialValues = {
     firstName,
@@ -30,43 +32,43 @@ const UpdateForm = ({ userData }) => {
     preferedLanguage,
     officeAddres,
     profilePicture,
-  }
+  };
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
-  const dispatch = useDispatch()
+      setLoading(false);
+    }, 2000);
+  }, []);
+  const dispatch = useDispatch();
 
-  const history = useHistory()
+  const history = useHistory();
   const onSubmit = (values) => {
-    const data = new FormData()
-    data.append('profilePicture', values.profilePicture)
-    data.append('firstName', values.firstName)
-    data.append('lastName', values.lastName)
-    data.append('email', values.email)
-    data.append('preferedLanguage', values.preferedLanguage)
-    data.append('officeAddres', values.officeAddres)
+    const data = new FormData();
+    data.append('profilePicture', values.profilePicture);
+    data.append('firstName', values.firstName);
+    data.append('lastName', values.lastName);
+    data.append('email', values.email);
+    data.append('preferedLanguage', values.preferedLanguage);
+    data.append('officeAddres', values.officeAddres);
 
     axios
       .patch(
-        `https://elite-staging.herokuapp.com/api/v1/users/updateProfile/`,
+        'https://elite-staging.herokuapp.com/api/v1/users/updateProfile/',
         data,
       )
       .then((res) => {
-        dispatch({ type: 'UPDATE_SUCCESS', payload: res })
+        dispatch({ type: 'UPDATE_SUCCESS', payload: res });
         setTimeout(() => {
-          history.push('/dashboard/profile')
-        }, 3000)
-        toast.success('User Profile updated successfully')
+          history.push('/dashboard/profile');
+        }, 3000);
+        toast.success('User Profile updated successfully');
       })
       .catch((error) => {
-        dispatch({ type: 'UPDATE_FAILED', payload: error })
+        dispatch({ type: 'UPDATE_FAILED', payload: error });
         toast.error(
           'Image is required and in this quality jpeg,jpg,png and fileSize smaller than 1Mb. ',
-        )
-      })
-  }
+        );
+      });
+  };
 
   return (
     <>
@@ -99,12 +101,10 @@ const UpdateForm = ({ userData }) => {
                       } py-4 h-12 mr-10 md:m-0 focus:border-none  text-xs`}
                       name="profilePicture"
                       id="profilePicture"
-                      onChange={(event) =>
-                        formProps.setFieldValue(
-                          'profilePicture',
-                          event.target.files[0],
-                        )
-                      }
+                      onChange={(event) => formProps.setFieldValue(
+                        'profilePicture',
+                        event.target.files[0],
+                      )}
                     />
                     <span className={`${loading ? 'block' : 'hidden'}`}>
                       <Skeleton width={150} height={30} />
@@ -128,7 +128,8 @@ const UpdateForm = ({ userData }) => {
                       className="capitalize text-gray-500 pt-2  "
                     >
                       {' '}
-                      FirstName{' '}
+                      FirstName
+                      {' '}
                     </label>
                     <Field
                       type="text"
@@ -159,7 +160,8 @@ const UpdateForm = ({ userData }) => {
                       className="capitalize text-gray-500 pt-2  "
                     >
                       {' '}
-                      lastName{' '}
+                      lastName
+                      {' '}
                     </label>
                     <Field
                       type="text"
@@ -171,7 +173,8 @@ const UpdateForm = ({ userData }) => {
                       className="text-red-600"
                       name="lastName"
                       component="span"
-                    />{' '}
+                    />
+                    {' '}
                   </div>
                   <div
                     className={`${
@@ -192,7 +195,8 @@ const UpdateForm = ({ userData }) => {
                       className="capitalize text-gray-500 pt-2  "
                     >
                       {' '}
-                      email{' '}
+                      email
+                      {' '}
                     </label>
                     <Field
                       type="text"
@@ -222,7 +226,8 @@ const UpdateForm = ({ userData }) => {
                       className="capitalize text-gray-500 pt-2  "
                     >
                       {' '}
-                      Language{' '}
+                      Language
+                      {' '}
                     </label>
                     <Field
                       type="text"
@@ -250,7 +255,8 @@ const UpdateForm = ({ userData }) => {
                       className="capitalize text-gray-500 pt-2  "
                     >
                       {' '}
-                      Address{' '}
+                      Address
+                      {' '}
                     </label>
                     <Field
                       type="text"
@@ -306,7 +312,7 @@ const UpdateForm = ({ userData }) => {
         </Formik>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default UpdateForm
+export default UpdateForm;

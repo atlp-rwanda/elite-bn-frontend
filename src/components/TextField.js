@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
-import Skeleton from 'react-loading-skeleton'
+import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 export const TextField = ({
   label,
@@ -27,4 +27,4 @@ export const TextField = ({
       />
     )}
   </div>
-)
+);
