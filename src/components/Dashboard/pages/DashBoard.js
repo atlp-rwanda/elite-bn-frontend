@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { logoutActionCreator } from '../../../store/actions/LogoutAction'
 import { fetchUserInfo } from '../../../store/actions/profileAction'
+import { fetchNotificationActionCreator } from '../../../store/actions/notificationAction'
+
 import NavBar from '../NavBar'
 import Footer from '../Footer'
 import SideBar from '../Sidebar'
@@ -14,11 +16,15 @@ export const DashBoard = ({
   LogoutAction,
   userData,
   GetUserProfile,
+  GetNotification,
+  notification,
 }) => {
   const token = localStorage.getItem('jwtToken')
   useEffect(() => {
     GetUserProfile()
+    GetNotification()
   }, [])
+  console.log(notification)
   return (
     <>
       {token ? (
@@ -27,6 +33,7 @@ export const DashBoard = ({
             userData={userData}
             LogoutAction={LogoutAction}
             Logout={Logout}
+            notifications={notification}
           />
           <Content />
           <SideBar />
@@ -42,11 +49,13 @@ export const DashBoard = ({
 export const mapStateToProps = (state) => ({
   Logout: state.user,
   userData: state.userProfile.userData,
+  notification: state.notify.notifications,
 })
 
 export const mapDispatchToProps = (dispatch) => ({
   GetUserProfile: () => dispatch(fetchUserInfo()),
   LogoutAction: () => dispatch(logoutActionCreator()),
+  GetNotification: () => dispatch(fetchNotificationActionCreator()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)
