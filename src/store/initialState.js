@@ -4,7 +4,7 @@ export const authInitialState = {
   error: null,
   loading: false,
   message: null,
-};
+}
 
 export const resetInitialState = {
   email: '',
@@ -12,8 +12,13 @@ export const resetInitialState = {
   error: null,
   loading: false,
   message: null,
-};
+}
 
 export const changeInitialState = {
   password: '',
-};
+}
+export const initialAssignedUsersToManagers = {
+  users: [],
+  loading: false,
+  assigned: null,
+}
